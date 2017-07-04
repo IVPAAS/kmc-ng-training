@@ -1,0 +1,63 @@
+@import '../../../theme/_colors.scss';
+@import '../../../theme/_mixins.scss';
+button {
+  border: solid;
+  background-color: $buttonBackgroundColor;
+  border-color: $borderColor;
+  @include roundness();
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 60px;
+  margin-right: 60px;
+  height: 100%;
+}
+
+.content {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 0 0 70px;
+  background: $mainBackgroundColor;
+  span {
+    margin-right: 10px;
+    font-size: 26px;
+  }
+  .title {
+    font-weight: bold;
+  }
+  .backBtn {
+    position: absolute;
+    margin-left: -30px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+}
+
+.headerLeft {
+  display: flex;
+  flex: 0 0 300px;
+  align-items: center;
+}
+
+.headerRight {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: row;
+  align-items: center;
+  button {
+    height: 32px;
+    margin-left: 8px;
+  }
+  .btnSave {
+    width: 100px;
+  }
+}

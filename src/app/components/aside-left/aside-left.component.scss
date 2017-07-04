@@ -1,0 +1,22 @@
+@import '../../../theme/_colors.scss';
+@import '../../../theme/_mixins.scss';
+
+.asideLeft {
+  border-style: solid;
+  border-color:  $borderColor;
+  @include roundness();
+  flex: 0 0 180px;
+  padding: 10px;
+  height: 100%;
+  .item {
+    height: 36px;
+    padding-left: 10px;
+    span {
+      line-height: 32px;
+    }
+  }
+  .active {
+    background-color: $activeBackgroundColor;
+    font-weight: bold;
+  }
+}

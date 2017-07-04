@@ -1,0 +1,56 @@
+@import '../../../theme/_colors.scss';
+@import '../../../theme/_mixins.scss';
+.asideRight {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 220px; //padding: 10px;
+  height: 100%;
+  background: $asideBackgroundColor;
+  .item {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-color: red; //$borderColor;
+    @include roundness();
+    .player {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      .priview {
+        padding: 10px;
+        display: flex;
+        flex: 0 0 auto;
+        align-items: center;
+        .share {
+          padding: 5px;
+          color: $txtBackgroundColor;
+        }
+      }
+      .upload {
+        display: flex;
+        background-color: $uploadBackgroundColor;
+        height: 250px;
+        justify-content: center;
+        align-items: center;
+      }
+      button {
+        width: 120px;
+        height: 32px;
+      }
+    }
+    .itemDetails {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      margin-top: 10px;
+      .txt {
+        width: 120px;
+        color: $txtBackgroundColor;
+      }
+      .title {
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+  }
+}
