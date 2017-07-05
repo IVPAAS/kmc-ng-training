@@ -1,8 +1,0 @@
-<div class="asideLeft">
-  <div class="item" 
-  *ngFor="let section of sections" 
-  [class.active]="section === selectedSection" 
-  (click)="onSelect(section)">
-    <span id={{section.key}}> {{section.label}}</span>
-  </div>
-</div>

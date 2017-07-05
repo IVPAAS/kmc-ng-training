@@ -1,23 +1,25 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'aside-left',
-  templateUrl: './aside-left.component.html',
-  styleUrls: ['./aside-left.component.scss']
+  selector: 'section',
+  templateUrl: './section.component.html',
+  styleUrls: ['./section.component.scss']
 })
 
-export class AsideLeftComponent {
+export class SectionComponent {
 
   sections = SECTIONS;
 
   selectedSection: SectionItem;
 
   onSelect(section: SectionItem): void {
-    this.selectedSection = section;
+    this.sections.forEach(x => x.isActive = false);
+    this.selectedSection= section;
     this.selectedSection.isActive = true;
+    console.log(JSON.stringify(this.sections));
   }
 }
-export class SectionItem {
+export interface SectionItem {
   isActive: boolean;
   key: number;
   label: string;

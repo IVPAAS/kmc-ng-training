@@ -1,6 +1,6 @@
 @import '../../../theme/_colors.scss';
 @import '../../../theme/_mixins.scss';
-.asideRight {
+.priview {
   display: flex;
   flex-direction: column;
   flex: 0 0 220px; //padding: 10px;
@@ -16,7 +16,7 @@
       display: flex;
       flex-direction: column;
       height: 100%;
-      .priview {
+      .priviewItem {
         padding: 10px;
         display: flex;
         flex: 0 0 auto;

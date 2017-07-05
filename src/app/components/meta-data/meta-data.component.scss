@@ -6,7 +6,8 @@
   flex-direction: row;
 }
 
-.center {
+.meta-data {
+  padding-left: 10px;
   border-style: solid;
   border-color:  $borderColor;
   @include roundness();
