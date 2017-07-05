@@ -78,15 +78,15 @@
           margin-left: 15px;
         }
       }
-      sectionSelector {
+      app-section-selector {
         display: flex;
         flex: 0 0 180px;
       }
-      metaSelector {
+      app-meta-selector {
         display: flex;
         flex: 1 1 auto;
       }
-      previewSelector {
+      app-preview-selector {
         display: flex;
         flex: 0 0 300px;
       }
