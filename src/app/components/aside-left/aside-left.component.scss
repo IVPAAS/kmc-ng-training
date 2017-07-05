@@ -1,12 +1,13 @@
 @import '../../../theme/_colors.scss';
 @import '../../../theme/_mixins.scss';
+:host {
+  flex: 0 0 180px;  
+}
 
 .asideLeft {
   border-style: solid;
-  border-color:  $borderColor;
-  @include roundness();
-  flex: 0 0 180px;
-  padding: 10px;
+  border-color: $borderColor;
+  @include roundness();  
   height: 100%;
   .item {
     height: 36px;

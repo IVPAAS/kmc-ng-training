@@ -6,14 +6,13 @@
   flex-direction: row;
 }
 
-.main {
+.center {
   border-style: solid;
   border-color:  $borderColor;
   @include roundness();
   display: flex;
   flex-direction: column;
-  flex: 1 1 auto;
-  padding: 10px;
+  flex: 1 1 auto;  
   height: 100%;
   margin-right: 2rem;
   .section {
