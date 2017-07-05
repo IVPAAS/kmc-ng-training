@@ -12,7 +12,7 @@ import { EntryDetailsService } from './components/section/section.service';
     MetaComponent,
     PreviewComponent,
     SectionComponent
-  ],
+  ], 
   imports: [
     BrowserModule
   ],
