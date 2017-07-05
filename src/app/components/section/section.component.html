@@ -1,7 +1,7 @@
 <div class="section">
   <div class="item" 
   *ngFor="let sectionItem of sections" 
-  [class.active]="sectionItem === selectedSection" 
+  [class.active]="sectionItem.isActive" 
   (click)="onSelect(sectionItem)">
     <span id={{sectionItem.key}}> {{sectionItem.label}}</span>
   </div>

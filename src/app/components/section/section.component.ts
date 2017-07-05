@@ -1,34 +1,27 @@
 import { Component } from '@angular/core';
-import { EntryDetailsService } from './entry-details.service';
+import { kEntrySectionsService } from '../../services/k-entry-sections.service';
+import { SectionItem } from '../../services/k-entry-sections.service';
+
 
 @Component({
   selector: 'section',
   templateUrl: './section.component.html',
-  styleUrls: ['./section.component.scss'],
-  providers: [EntryDetailsService]
+  styleUrls: ['./section.component.scss']
 })
 
 export class SectionComponent {
 
   sections: SectionItem[];
-  selectedSection: SectionItem;
-  
-  constructor(private entryDetailsService: EntryDetailsService) { }
+
+  constructor(private entrySectionsService: kEntrySectionsService) { }
 
   ngOnInit() {
-    this.sections = this.entryDetailsService.get();
+    this.sections = this.entrySectionsService.getSections();
   }
 
   onSelect(section: SectionItem): void {
     this.sections.forEach(x => x.isActive = false);
-    this.selectedSection = section;
-    this.selectedSection.isActive = true;
-    console.log(JSON.stringify(this.sections));
+    section.isActive = true;
   }
-}
-export interface SectionItem {
-  isActive: boolean;
-  key: number;
-  label: string;
 }
 
