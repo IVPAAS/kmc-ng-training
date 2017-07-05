@@ -1,0 +1,35 @@
+  @import "../../_variables.scss";
+  @import "../../_mixins.scss";
+  /* CONTENT LEFT */
+
+  .content_left {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 200px;
+    padding: 15px 0;
+    border-style: solid;
+    border-width: 2px;
+    border-color: $layout_borders_color;
+    background: $white;
+    .item {
+      height: 36px;
+      padding-left: 10px;
+      span {
+        line-height: 32px;
+        color: $grey;
+      }
+    }
+    .active {
+      background-color: $active_item_color;
+      font-weight: bold;
+    }
+    .active span {
+      background-color: $active_item_color;
+      font-weight: bold;
+      color: $black;
+    }
+    .content_left ul li {
+      padding: 10px;
+      list-style-type: none;
+    }
+  }
