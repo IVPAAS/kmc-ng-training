@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { SectionComponent } from './components/section/section.component';
 import { PreviewComponent } from './components/preview/preview.component';
-import { MetaDataComponent } from './components/meta-data/meta-data.component';
-import { MainComponent } from './components/main/main.component';
+import { kMetaDataComponent } from './components/metaData/kMetaData.component';
+import { kMainComponent } from './components/main/kMain.component';
 import { kEntrySectionsService } from './services/k-entry-sections.service';
 
 
@@ -14,8 +14,8 @@ import { kEntrySectionsService } from './services/k-entry-sections.service';
     AppComponent,
     SectionComponent,
     PreviewComponent,
-    MetaDataComponent,
-    MainComponent
+    kMetaDataComponent,
+    kMainComponent
   ],
   imports: [
     BrowserModule
