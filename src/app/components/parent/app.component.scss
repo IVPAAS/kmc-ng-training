@@ -84,11 +84,12 @@
       }
       app-meta-selector {
         display: flex;
-        flex: 1 1 auto;
+        flex: 1 1 100%;
       }
       app-preview-selector {
         display: flex;
         flex: 0 0 300px;
+        margin-left: 25px;
       }
     }
   }
