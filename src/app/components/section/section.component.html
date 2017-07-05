@@ -1,5 +1,5 @@
 <div class="content_left">
-  <div class="item" *ngFor="let section of sections" [class.active]="section === selectedItem">
+  <div class="item" *ngFor="let section of sections" [class.active]="section.IsActive">
     <span (click)="changeSelection(section)">{{section.Label}}</span>
   </div>
 </div>
