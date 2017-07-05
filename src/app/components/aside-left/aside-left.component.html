@@ -3,6 +3,6 @@
   *ngFor="let section of sections" 
   [class.active]="section === selectedSection" 
   (click)="onSelect(section)">
-    <span>{{section}}</span>
+    <span id={{section.key}}> {{section.label}}</span>
   </div>
 </div>
