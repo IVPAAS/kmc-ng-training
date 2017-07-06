@@ -1,22 +1,23 @@
-<div class="content_middle">
+<form class="content_middle" [formGroup]="form" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
 
   <div class="content_row">
     <span class="content_param">ID</span>
-    <span class="content_value">o_sdasdasd</span>
-
+    <!--<span class="content_value" formControlName="id">o_sdasdasd</span>-->
+    <input formControlName="id" class="content_value disabled" formControlName="id" type="text" name="id">
+    
   </div>
 
   <div class="content_row">
     <span class="content_param">Name</span>
-    <input class="content_value" type="text" name="Name">
+    <input class="content_value" formControlName="name" type="text" name="Name">
   </div>
 
   <div class="content_row">
     <span class="content_param">Description</span>
-    <textarea class="content_value"></textarea>
+    <textarea formControlName="description" class="content_value"></textarea>
   </div>
 
-  <div class="content_row">
+  <!--<div class="content_row">
     <span class="content_param">Tags</span>
     <input class="content_value" type="text" name="Tags">
   </div>
@@ -29,14 +30,14 @@
   <div class="content_row">
     <span class="content_param"></span>
     <span class="content_value link"><a href="">Browse category</a></span>
-  </div>
+  </div>-->
 
   <div class="content_row">
     <span class="content_param">Reference ID</span>
-    <input class="content_value" type="text" name="ReferenceID">
+    <input formControlName="referenceId" class="content_value" type="text" name="ReferenceID">
   </div>
 
-  <div class="content_row">
+  <!--<div class="content_row">
     <span class="content_param content_param_headline">Parental control</span>
   </div>
 
@@ -72,6 +73,6 @@
   <div class="content_row">
     <span class="content_param">Key</span>
     <input class="content_value" type="text" name="Key">
-  </div>
-
-</div>
+  </div>-->
+  <span> {{ form.value | json }} </span>
+</form>

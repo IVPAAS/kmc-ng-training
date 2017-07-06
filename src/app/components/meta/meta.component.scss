@@ -1,6 +1,5 @@
   @import "../../_variables.scss";
   @import "../../_mixins.scss";
-  
   /* CONTENT MIDDLE */
 
   .content_middle {
@@ -31,7 +30,16 @@
         background: $input_background_color;
         border: none;
         @include roundCorner($corner_radius);
+        .ng-invalid {
+          border: $red;
+          border-style: solid;
+          border-width: 2px;
+        }
       }
+      input[type=text].disabled {
+        background: $white;
+      }
+      
       textarea {
         height: 100px;
         background: $input_background_color;
