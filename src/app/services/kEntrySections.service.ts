@@ -6,9 +6,12 @@ const SECTIONS: string[] = ["Metadata", "Thumbnails", "AccessControl", "Scheduli
 export class kEntrySectionsService {
     getSections(): SectionItem[] {
         let sectionItems: SectionItem[] = [];
-        for (var i = 0; i < SECTIONS.length; i++) {
-            sectionItems.push({ isActive: false, key: i, label: SECTIONS[i] });
-        }
+        let index = 0;
+        SECTIONS.forEach(element => {
+            sectionItems.push({ isActive: false, key: index, label: SECTIONS[index] });
+            index++;
+        });
+                
         sectionItems[0].isActive = true;
         return sectionItems;
     }
