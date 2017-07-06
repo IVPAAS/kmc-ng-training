@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'kMetaData',
-  templateUrl: './kMetaData.component.html',
-  styleUrls: ['./kMetaData.component.scss']
+  selector: 'k-metadata',
+  templateUrl: './metadata.component.html',
+  styleUrls: ['./metadata.component.scss']
 })
-export class kMetaDataComponent {
+export class MetaDataComponent {
   form;
 
   ngOnInit() {

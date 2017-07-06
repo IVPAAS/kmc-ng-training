@@ -3,26 +3,25 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { kSectionComponent } from './components/section/kSection.component';
-import { kPreviewComponent } from './components/preview/kPreview.component';
-import { kMetaDataComponent } from './components/metaData/kMetaData.component';
-import { kMainComponent } from './components/main/kMain.component';
-import { kEntrySectionsService } from './services/kEntrySections.service';
+import { SectionComponent } from './components/section/section.component';
+import { PreviewComponent } from './components/preview/preview.component';
+import { MetaDataComponent } from './components/metadata/metadata.component';
+import { MainComponent } from './components/main/main.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    kSectionComponent,
-    kPreviewComponent,
-    kMetaDataComponent,
-    kMainComponent
+    SectionComponent,
+    PreviewComponent,
+    MetaDataComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule
   ],
-  providers: [kEntrySectionsService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
