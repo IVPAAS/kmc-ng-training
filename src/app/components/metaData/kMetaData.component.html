@@ -1,17 +1,19 @@
-<div class="meta-data">
-  <div class="item">
-    <div class="txt">ID</div>
-    <div>12334</div>
-  </div>
-  <div class="item">
-    <div class="txt">Name</div>
-    <div><input type="text" class="inputTxt"></div>
-  </div>
-  <div class="item">
-    <div class="txt">Description</div>
-    <div><textarea rows="5"></textarea></div>
-  </div>
-  <div class="item">
+<form [formGroup]="form">
+  <div class="meta-data">
+    <div class="item">
+      <div class="txt">ID</div>
+      <div>12334</div>
+    </div>
+    <div class="item">
+      <div class="txt">Name</div>
+      <div><input type="text" class="inputTxt" name="name" id="name" formControlName="name"><span> {{ form.value | json }} </span></div>
+
+    </div>
+    <div class="item">
+      <div class="txt">Description</div>
+      <div><textarea rows="5" name="description" id="description" formControlName="description"></textarea></div>
+    </div>
+    <!--<div class="item">
     <div class="txt">Tags</div>
     <div><input type="text" class="inputTxt"></div>
   </div>
@@ -21,12 +23,12 @@
   </div>
   <div class="item">
     <div class="browse"><a class="hyperlink" href="">Browse category</a></div>
-  </div>
-  <div class="item">
-    <div class="txt">Reference ID</div>
-    <div><input type="text" class="inputTxt"></div>
-  </div>
-  <div class="item section">
+  </div>-->
+    <div class="item">
+      <div class="txt">Reference ID</div>
+      <div><input type="text" class="inputTxt" ame="referenceID" id="referenceID" formControlName="referenceID"></div>
+    </div>
+    <!--<div class="item section">
     <div class="title">Parenatal Control</div>
   </div>
   <div class="item">
@@ -57,5 +59,6 @@
   <div class="item">
     <div class="txt">Key</div>
     <div><input type="text" class="inputTxt"></div>
+  </div>-->
   </div>
-</div>
+</form>

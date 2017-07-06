@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { kSectionComponent } from './components/section/kSection.component';
@@ -18,7 +19,8 @@ import { kEntrySectionsService } from './services/kEntrySections.service';
     kMainComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule
   ],
   providers: [kEntrySectionsService],
   bootstrap: [AppComponent]
