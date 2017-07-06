@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { kEntrySectionsService } from '../../services/k-entry-sections.service';
-import { SectionItem } from '../../services/k-entry-sections.service';
+import { kEntrySectionsService } from '../../services/kEntrySections.service';
+import { SectionItem } from '../../services/kEntrySections.service';
 
 
 @Component({
-  selector: 'section',
-  templateUrl: './section.component.html',
-  styleUrls: ['./section.component.scss']
+  selector: 'kSection',
+  templateUrl: './kSection.component.html',
+  styleUrls: ['./kSection.component.scss']
 })
 
-export class SectionComponent {
+export class kSectionComponent {
 
   sections: SectionItem[];
 

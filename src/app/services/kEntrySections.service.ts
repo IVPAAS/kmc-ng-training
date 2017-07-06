@@ -5,10 +5,11 @@ const SECTIONS: string[] = ["Metadata", "Thumbnails", "AccessControl", "Scheduli
 @Injectable()
 export class kEntrySectionsService {
     getSections(): SectionItem[] {
-        var sectionItems: SectionItem[] = [];
-        for (var i = 0; i <= SECTIONS.length; i++) {
+        let sectionItems: SectionItem[] = [];
+        for (var i = 0; i < SECTIONS.length; i++) {
             sectionItems.push({ isActive: false, key: i, label: SECTIONS[i] });
         }
+        sectionItems[0].isActive = true;
         return sectionItems;
     }
 }
