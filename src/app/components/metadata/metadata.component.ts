@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 // import { Observable } from 'rxjs/Observable';
 
@@ -7,7 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   templateUrl: './metadata.component.html',
   styleUrls: ['./metadata.component.scss']
 })
-export class MetaDataComponent implements OnInit, OnDestroy {
+export class MetaDataComponent implements OnInit {
   metadataForm: FormGroup;
   isValid: boolean;
   isDirty: boolean;
@@ -25,10 +25,6 @@ export class MetaDataComponent implements OnInit, OnDestroy {
       this.isValid = this.metadataForm.valid;
       this.isDirty  = this.metadataForm.dirty;
     }); 
-  }
-
-  ngOnDestroy()  {
-    this.metadataForm.value.unsubscribe();    
   }
 
   onSubmit(metaDate) {
