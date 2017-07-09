@@ -1,4 +1,4 @@
-<form [formGroup]="form">
+<form [formGroup]="metadataForm">
   <div class="meta-data">
     <div class="item">
       <div class="txt">ID</div>
@@ -6,8 +6,7 @@
     </div>
     <div class="item">
       <div class="txt">Name</div>
-      <div><input type="text" class="inputTxt" name="name" id="name" formControlName="name"><span> {{ form.value | json }} </span></div>
-
+      <div><input type="text" class="inputTxt" name="name" id="name" formControlName="name"> </div>
     </div>
     <div class="item">
       <div class="txt">Description</div>
@@ -27,6 +26,10 @@
     <div class="item">
       <div class="txt">Reference ID</div>
       <div><input type="text" class="inputTxt" ame="referenceID" id="referenceID" formControlName="referenceID"></div>
+    </div>
+    <div class="item section">
+      <div class="txt ">
+        <span> isValid : {{ isValid }}, isDirty : {{ isDirty }} </span></div>
     </div>
     <!--<div class="item section">
     <div class="title">Parenatal Control</div>

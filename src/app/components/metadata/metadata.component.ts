@@ -1,21 +1,30 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+// import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'k-metadata',
   templateUrl: './metadata.component.html',
   styleUrls: ['./metadata.component.scss']
 })
-export class MetaDataComponent {
-  form;
+export class MetaDataComponent implements OnInit {
+  metadataForm: FormGroup;
+  isValid: boolean;
+  isDirty: boolean;
 
   ngOnInit() {
-    this.form = new FormGroup(
+    this.metadataForm = new FormGroup(
       {
-        name: new FormControl(),
+        name: new FormControl('', Validators.compose([Validators.required])),
         description: new FormControl(),
         referenceID: new FormControl()
       });
+
+    this.metadataForm.valueChanges.subscribe(data => {
+      console.log('Form changes', data);
+      this.isValid = this.metadataForm.valid;
+      this.isDirty  = this.metadataForm.dirty;
+    }); 
   }
 
   onSubmit(metaDate) {

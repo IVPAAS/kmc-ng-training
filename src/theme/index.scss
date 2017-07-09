@@ -1,2 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import './icons/style.scss';
+@import './_colors.scss';
+@import './_mixins.scss';
+button {
+  border: solid;
+  background-color: $buttonBackgroundColor;
+  border-color: $borderColor;
+  @include roundness();
+}
+
+.txt {
+  width: 120px;
+  color: $txtBackgroundColor;
+}
+
+.inputTxt {
+  background-color: $textareaBackgroundColor;
+  width: 220px;
+  height: 25px;
+  border: 0px solid;
+  @include roundness();
+}
+
+textarea {
+  background-color: $textareaBackgroundColor;
+  width: 220px;
+  border: 0px solid;
+  @include roundness();
+}
+
+input.ng-touched.ng-invalid {
+  border: 1px solid;
+  border-color: red;
+}

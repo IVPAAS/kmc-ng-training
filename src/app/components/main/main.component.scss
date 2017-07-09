@@ -1,11 +1,6 @@
 @import '../../../theme/_colors.scss';
 @import '../../../theme/_mixins.scss';
-button {
-  border: solid;
-  background-color: $buttonBackgroundColor;
-  border-color: $borderColor;
-  @include roundness();
-}
+
 
 .wrapper {
   display: flex;
