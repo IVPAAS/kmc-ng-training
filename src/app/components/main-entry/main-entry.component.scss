@@ -1,0 +1,89 @@
+  @import "../../_variables.scss";
+  @import "../../_mixins.scss";
+  body {
+    margin: 0;
+    background: $site_background_color;
+    font-family: 'Lato';
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    margin-right: 100px;
+  
+    /* HEADER */
+    .header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex: 0 0 100px;
+      .title {
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .backBtn {
+        position: absolute;
+        margin-left: -60px;
+        font-size: 20px;
+        color: $grey;
+      }
+      /* HEADER LEFT */
+      .header_left {
+        display: flex;
+        align-items: center;
+        height: auto;
+        font-weight: bold;
+        .span {
+          padding: 10px;
+        }
+        .back_button {
+          margin-left: -60px;
+        }
+        .kIconvideo {
+          font-size: 22px;
+          color: $grey;
+        }
+      }
+      /* HEADER RIGHT */
+      .header_right {
+        display: flex;
+        align-items: center;
+        height: auto;
+        button {
+          margin-left: 8px;
+        }
+        span {
+          padding: 10px;
+        }
+      }
+    }
+    /* CONTENT */
+    .content {
+      display: flex;
+      flex-direction: row;
+      flex: 1 1 100%;
+      .jumpto {
+        position: fixed;
+        right: 500px;
+        top: 123px;
+        span {
+          float: right;
+          margin-left: 15px;
+        }
+      }
+      app-section-selector {
+        display: flex;
+        flex: 0 0 180px;
+      }
+      app-meta-selector {
+        display: flex;
+        flex: 1 1 100%;
+      }
+      app-preview-selector {
+        display: flex;
+        flex: 0 0 300px;
+        margin-left: 25px;
+      }
+    }
+  }

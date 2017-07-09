@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 
 @Component({
@@ -6,7 +6,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
   templateUrl: './meta.component.html',
   styleUrls: ['./meta.component.scss']
 })
-export class MetaFormComponent {
+export class MetaFormComponent implements OnInit {
   form: FormGroup;
 
   ngOnInit() {
@@ -19,10 +19,17 @@ export class MetaFormComponent {
       description: new FormControl('description'),
       referenceId: new FormControl('reference id')
     });
+
+    // bind on change
+    this.form.valueChanges.subscribe(data => {
+      console.log('is dirty: ' + this.form.dirty);
+      console.log('is valid: ' + this.form.valid);
+    });
   }
+
+
 
   onSubmit(metaData) {
     console.log(metaData);
   }
-
 }

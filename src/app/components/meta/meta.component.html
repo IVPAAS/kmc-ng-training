@@ -4,7 +4,7 @@
     <span class="content_param">ID</span>
     <!--<span class="content_value" formControlName="id">o_sdasdasd</span>-->
     <input formControlName="id" class="content_value disabled" formControlName="id" type="text" name="id">
-    
+
   </div>
 
   <div class="content_row">
@@ -74,5 +74,5 @@
     <span class="content_param">Key</span>
     <input class="content_value" type="text" name="Key">
   </div>-->
-  <span> {{ form.value | json }} </span>
+  <span> {{ form.value | json }}, isDirty : {{ form.dirty }} </span>
 </form>

@@ -25,37 +25,5 @@
       .content_value {
         flex: 0 0 300px;
       }
-      input[type=text] {
-        height: 30px;
-        background: $input_background_color;
-        border: none;
-        @include roundCorner($corner_radius);
-        .ng-invalid {
-          border: $red;
-          border-style: solid;
-          border-width: 2px;
-        }
-      }
-      input[type=text].disabled {
-        background: $white;
-      }
-      
-      textarea {
-        height: 100px;
-        background: $input_background_color;
-        padding: 0;
-        border: none;
-        @include roundCorner($corner_radius);
-        resize: none;
-      }
-      .checkbox {
-        margin-right: 24px;
-      }
-      .link {
-        text-decoration: underline;
-        &:hover {
-          background-color: red;
-        }
-      }
     }
   }

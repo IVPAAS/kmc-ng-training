@@ -1,2 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import './icons/style.scss';
+@import "../app/_variables.scss";
+@import "../app/_mixins.scss";
+input[type=text] {
+  height: 30px;
+  background: $input_background_color;
+  border: none;
+  @include roundCorner($corner_radius);
+  &.ng-invalid {
+    border: $red;
+    border-style: solid;
+    border-width: 2px;
+  }
+  &.disabled {
+    background: $white;
+  }
+}
+
+button {
+  color: $grey;
+  border-color: $grey;
+  border-style: solid;
+  background: $site_background_color;
+  height: 32px;
+}
+
+textarea {
+  height: 100px;
+  background: $input_background_color;
+  padding: 0;
+  border: none;
+  @include roundCorner($corner_radius);
+  resize: none;
+}
+
+.checkbox {
+  margin-right: 24px;
+}
+
+.link {
+  text-decoration: underline;
+  &:hover {
+    background-color: red;
+  }
+}
