@@ -20,11 +20,13 @@ export class MetaDataComponent implements OnInit {
         referenceID: new FormControl()
       });
 
-    this.metadataForm.valueChanges.subscribe(data => {
-      console.log('Form changes', data);
+    this.metadataForm.valueChanges.subscribe(data => {      
+      this.isDirty = this.metadataForm.dirty;
+    });
+
+    this.metadataForm.statusChanges.subscribe(data => {      
       this.isValid = this.metadataForm.valid;
-      this.isDirty  = this.metadataForm.dirty;
-    }); 
+    });
   }
 
   onSubmit(metaDate) {

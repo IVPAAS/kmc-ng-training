@@ -20,7 +20,7 @@ export class SectionComponent {
   }
 
   onSelect(section: SectionItem): void {
-    this.sections.forEach(x => x.isActive = false);
+    this.sections.forEach(sectionItem => sectionItem.isActive = false);
     section.isActive = true;
   }
 }
