@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-// import { Observable } from 'rxjs/Observable';
+import { EntrySectionsService } from '../../services/entry-sections.service';
+import { SectionTypes } from '../../services/entry-sections.service';
 
 @Component({
   selector: 'k-metadata',
@@ -12,6 +13,8 @@ export class MetaDataComponent implements OnInit {
   isValid: boolean;
   isDirty: boolean;
 
+  constructor(private entrySectionsService: EntrySectionsService) { }
+
   ngOnInit() {
     this.metadataForm = new FormGroup(
       {
@@ -20,12 +23,16 @@ export class MetaDataComponent implements OnInit {
         referenceID: new FormControl()
       });
 
-    this.metadataForm.valueChanges.subscribe(data => {      
+    this.metadataForm.valueChanges.subscribe(data => {
       this.isDirty = this.metadataForm.dirty;
     });
 
-    this.metadataForm.statusChanges.subscribe(data => {      
+    this.metadataForm.valueChanges.subscribe(data => {
       this.isValid = this.metadataForm.valid;
+    });
+
+    this.metadataForm.statusChanges.subscribe(data => {
+      this.entrySectionsService.updateSectionState(SectionTypes.Metadata, this.metadataForm.dirty, this.metadataForm.valid);
     });
   }
 

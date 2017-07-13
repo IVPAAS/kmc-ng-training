@@ -1,19 +1,22 @@
-<div class="wrapper">
-  <div class="header">
-    <div class="headerLeft">
-      <span class="backBtn kIconarrow_backward"></span>
-      <span class="kIconvideo"></span>
-      <span class="title">Title</span>
+<form [formGroup]="mainForm">
+  <div class="wrapper">
+    <div class="header">
+      <div class="headerLeft">
+        <span class="backBtn kIconarrow_backward"></span>
+        <span class="kIconvideo"></span>
+        <span class="title">Title</span>
+        <k-login></k-login>
+      </div>
+      <div class="headerRight">
+        <button class="btnSave" [disabled]="!isValid">Save</button>
+        <button><span class="kIconarrow_backward"></span></button>
+        <button><span class="kIconarrow_forward"></span></button>
+      </div>
     </div>
-    <div class="headerRight">
-      <button class="btnSave">Save</button>
-      <button><span class="kIconarrow_backward"></span></button>
-      <button><span class="kIconarrow_forward"></span></button>
+    <div class="content">
+      <k-section></k-section>
+      <k-metadata></k-metadata>
+      <k-preview></k-preview>
     </div>
   </div>
-  <div class="content">
-    <k-section></k-section>
-    <k-metadata></k-metadata>
-    <k-preview></k-preview>
-  </div>
-</div>
+</form>

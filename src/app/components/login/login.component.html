@@ -1,0 +1,20 @@
+<form [formGroup]="loginForm">
+  <div class="login">
+    <div class="item">
+      <div class="txt">Entry ID</div>
+      <div><input type="text" class="inputTxt" name="entryId" id="entryId" formControlName="entryId"> </div>
+    </div>
+    <div class="item">
+      <div class="txt">Username</div>
+      <div><input type="text" class="inputTxt" name="userName" id="userName" formControlName="userName"> </div>
+    </div>
+    <div class="item">
+      <div class="txt">Password</div>
+      <div><input type="text" class="inputTxt" name="password" id="password" formControlName="password"> </div>
+    </div>
+    <div class="item">
+      <button class="btnSave" (click)="login()">Save</button>
+    </div>
+
+  </div>
+</form>

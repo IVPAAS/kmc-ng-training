@@ -7,6 +7,7 @@ import { SectionComponent } from './components/section/section.component';
 import { PreviewComponent } from './components/preview/preview.component';
 import { MetaDataComponent } from './components/metadata/metadata.component';
 import { MainComponent } from './components/main/main.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MainComponent } from './components/main/main.component';
     SectionComponent,
     PreviewComponent,
     MetaDataComponent,
-    MainComponent
+    MainComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
