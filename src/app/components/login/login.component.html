@@ -1,0 +1,21 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+  <div class="content_row">
+    <span class="content_param">Entry ID</span>
+    <input class="content_value" formControlName="entry_id" type="text" name="entry_id">
+  </div>
+
+  <div class="content_row">
+    <span class="content_param">Username</span>
+    <input class="content_value" formControlName="username" type="text" name="username">
+  </div>
+
+  <div class="content_row">
+    <span class="content_param">Password</span>
+    <input class="content_value" formControlName="password" type="text" name="password">
+  </div>
+
+  <button type="submit">Login</button>
+
+  <!-- <span> {{ form.value | json }}, isDirty : {{ form.dirty }} </span> -->
+</form>

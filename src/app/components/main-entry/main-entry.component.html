@@ -17,12 +17,17 @@
       </div>
 
       <div class="header_right">
-        <button class="save_button">Save</button>
+        <button class="save_button" [disabled]="saveButtonDisabled">Save</button>
         <button> <span class="kIconarrow_backward"></span></button>
         <button> <span class="kIconarrow_forward"></span></button>
       </div>
 
     </div>
+
+    <!-- login app-login-selector -->
+    <app-login-selector>
+    </app-login-selector>
+
 
     <!-- middle -->
     <div class="content">
