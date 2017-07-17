@@ -6,10 +6,9 @@ import { LoginService } from '../../services/login.service';
 @Component({
   selector: 'k-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  providers: [LoginService]
-
+  styleUrls: ['./login.component.scss']  
 })
+
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isValid: boolean;
@@ -30,5 +29,7 @@ export class LoginComponent implements OnInit {
     console.log("EntryId: " + this.loginForm.value.entryId
       + " Username: " + this.loginForm.value.userName
       + " Passowrd: " + this.loginForm.value.password);
+
+      this.loginService.login(this.loginForm.value.userName, this.loginForm.value.password)
   }
 }

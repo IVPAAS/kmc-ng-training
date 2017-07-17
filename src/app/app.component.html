@@ -3,7 +3,14 @@
 <head>
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
+
 <body>
-  <k-main></k-main>
+  <div *ngIf="isValid">
+    <k-main></k-main>
+  </div>
+  <div *ngIf="!isValid">
+    <k-login></k-login>
+  </div>
 </body>
+
 </html>

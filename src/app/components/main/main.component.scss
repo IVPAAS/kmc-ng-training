@@ -1,6 +1,9 @@
 @import '../../../theme/_colors.scss';
 @import '../../../theme/_mixins.scss';
 
+body {
+  background: $mainBackgroundColor;
+}
 
 .wrapper {
   display: flex;
