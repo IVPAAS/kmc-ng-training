@@ -1,7 +1,9 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { UserLoginByLoginIdAction } from 'kaltura-typescript-client/types/UserLoginByLoginIdAction';
 import { KalturaClient } from '@kaltura-ng/kaltura-client';
+import { environment } from '../../environments/environment';
+
 
 export interface UserContext {
     ks: string;
@@ -16,7 +18,12 @@ export class LoginService {
     private _userContext = new BehaviorSubject<{ userContext: UserContext }>({ userContext: null });
     public userContext$ = this._userContext.asObservable();
 
-    constructor(private _kalturaClient: KalturaClient) { }
+    constructor(private _kalturaClient: KalturaClient) {
+        if (environment.ks) {
+            _kalturaClient.ks = environment.ks;
+            this._userContext.next({ userContext: { ks: environment.ks } });
+        }
+    }
 
     public login(userName: string, password: string): void {
 
@@ -26,11 +33,13 @@ export class LoginService {
         this._kalturaClient.request(new UserLoginByLoginIdAction(
             {
                 loginId: userName,
-                password: password
+                password: password,
+                privileges: "disableentitlement"
             }
         )).subscribe(
             result => {
                 this._state.next({ isBusy: false });
+                this._kalturaClient.ks = result;
                 this._userContext.next({ userContext: { ks: result } });
             },
             error => {

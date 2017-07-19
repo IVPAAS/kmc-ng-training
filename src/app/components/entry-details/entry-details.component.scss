@@ -1,6 +1,5 @@
 @import '../../../theme/_colors.scss';
 @import '../../../theme/_mixins.scss';
-
 body {
   background: $mainBackgroundColor;
 }
@@ -31,6 +30,7 @@ body {
   }
   .title {
     font-weight: bold;
+    width: 500px;
   }
   .backBtn {
     position: absolute;

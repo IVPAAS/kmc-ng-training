@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { EntrySectionsService } from '../../services/entry-sections.service';
 import { SectionItem } from '../../services/entry-sections.service';
 import { Subscription } from 'rxjs';
+import { MetadataService } from '../../services/metadata.service';
+import { KalturaBaseEntry } from 'kaltura-typescript-client/types/KalturaBaseEntry';
 
 @Component({
   selector: 'k-section',

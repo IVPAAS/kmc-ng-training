@@ -6,14 +6,13 @@ import { AppComponent } from './app.component';
 import { SectionComponent } from './components/section/section.component';
 import { PreviewComponent } from './components/preview/preview.component';
 import { MetaDataComponent } from './components/metadata/metadata.component';
-import { MainComponent } from './components/main/main.component'; 
+import { EntryDetailsComponent  } from './components/entry-details/entry-details.component'; 
 import { LoginComponent } from './components/login/login.component';
 import { KalturaClient } from '@kaltura-ng/kaltura-client/kaltura-client.service';
 import { KalturaClientConfiguration } from '@kaltura-ng/kaltura-client/kaltura-client-configuration.service';
 import { HttpModule } from '@angular/http';
 import { LoginService } from './services/login.service';
-
-
+import { MetadataService } from './services/metadata.service';
 
 export function KalturaConfigurationFactory()
 {
@@ -29,7 +28,7 @@ export function KalturaConfigurationFactory()
     SectionComponent,
     PreviewComponent,
     MetaDataComponent,
-    MainComponent,
+    EntryDetailsComponent ,
     LoginComponent
   ],
   imports: [ 
@@ -40,6 +39,7 @@ export function KalturaConfigurationFactory()
   providers: [
      KalturaClient, 
      LoginService,
+     MetadataService,
     {  
       provide : KalturaClientConfiguration,
       useFactory : KalturaConfigurationFactory
@@ -47,4 +47,5 @@ export function KalturaConfigurationFactory()
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {    
+}

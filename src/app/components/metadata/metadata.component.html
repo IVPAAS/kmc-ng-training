@@ -2,23 +2,23 @@
   <div class="meta-data">
     <div class="item">
       <div class="txt">ID</div>
-      <div>12334</div>
+      <div> {{entry.id}} </div>
     </div>
     <div class="item">
       <div class="txt">Name</div>
-      <div><input type="text" class="inputTxt" name="name" id="name" formControlName="name"> </div>
+      <div><input type="text" class="inputTxt" name="name" id="name" formControlName="name" value="{{entry.name}}"> </div>
     </div>
     <div class="item">
       <div class="txt">Description</div>
-      <div><textarea rows="5" name="description" id="description" formControlName="description"></textarea></div>
+      <div><textarea rows="5" name="description" id="description" formControlName="description" value="{{entry.description}}"></textarea></div>
     </div>
     <div class="item">
       <div class="txt">Reference ID</div>
-      <div><input type="text" class="inputTxt" ame="referenceID" id="referenceID" formControlName="referenceID"></div>
+      <div><input type="text" class="inputTxt" ame="referenceID" id="referenceID" formControlName="referenceID" value="{{entry.referenceId}}"></div>
     </div>
-    <div class="item section">
+    <!--<div class="item section">
       <div class="txt ">
         <span> isValid : {{ isValid }}, isDirty : {{ isDirty }} </span></div>
-    </div>
+    </div>-->
   </div>
 </form>

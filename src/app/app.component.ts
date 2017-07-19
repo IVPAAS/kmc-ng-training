@@ -14,7 +14,8 @@ export class AppComponent implements OnInit , OnDestroy{
   isValid: boolean = false;
   subscription: Subscription;
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService) {    
+   }
 
   ngOnInit() {        
     this.subscription = this.loginService.userContext$.subscribe(
