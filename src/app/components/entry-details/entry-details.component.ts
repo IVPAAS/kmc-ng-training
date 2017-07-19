@@ -3,8 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { EntrySectionsService } from '../../services/entry-sections.service';
 import { Subscription } from 'rxjs';
 import { KalturaMediaEntry } from 'kaltura-typescript-client/types/KalturaMediaEntry';
-import { KalturaBaseEntry } from 'kaltura-typescript-client/types/KalturaBaseEntry';
-import { MetadataService } from '../../services/metadata.service';
+import { EntryDetailsService } from '../../services/entry-details.service';
 
 @Component({
   selector: 'k-entry-details',
@@ -16,12 +15,12 @@ export class EntryDetailsComponent implements OnInit, OnDestroy {
   mainForm: FormGroup;
   isValid: boolean;
   entrySectionsServiceSubscription: Subscription;
-  entry: KalturaBaseEntry;
+  entry: KalturaMediaEntry;
   metadataServiceSubscription: Subscription;
 
 
   constructor(private entrySectionsService: EntrySectionsService,
-    private metadataService: MetadataService) { }
+    private metadataService: EntryDetailsService) { }
 
   ngOnInit() {
     this.mainForm = new FormGroup({});
@@ -34,7 +33,7 @@ export class EntryDetailsComponent implements OnInit, OnDestroy {
 
     this.metadataServiceSubscription = this.metadataService.entry$.subscribe(
       (x) => {
-        this.entry = x.objectMetadata
+        this.entry = x.entry
       }
     );
   }

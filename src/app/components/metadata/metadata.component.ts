@@ -2,9 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EntrySectionsService } from '../../services/entry-sections.service';
 import { SectionTypes } from '../../services/entry-sections.service';
-import { MetadataService } from '../../services/metadata.service';
+import { EntryDetailsService } from '../../services/entry-details.service';
 import { Subscription } from 'rxjs';
-import { KalturaBaseEntry } from 'kaltura-typescript-client/types/KalturaBaseEntry';
 import { KalturaMediaEntry } from 'kaltura-typescript-client/types/KalturaMediaEntry';
 
 @Component({
@@ -18,10 +17,10 @@ export class MetaDataComponent implements OnInit , OnDestroy{
   isDirty: boolean;
   entryId: string;
   subscription: Subscription;
-  entry: KalturaBaseEntry;
+  entry: KalturaMediaEntry;
 
   constructor(private entrySectionsService: EntrySectionsService,
-    private metadataService: MetadataService) { }
+    private metadataService: EntryDetailsService) { }
 
   ngOnInit() {
     this.metadataForm = new FormGroup(
@@ -45,7 +44,7 @@ export class MetaDataComponent implements OnInit , OnDestroy{
 
     this.subscription = this.metadataService.entry$.subscribe(
       (x) => {
-        this.entry = x.objectMetadata
+        this.entry = x.entry
       }
     );
     

@@ -12,7 +12,7 @@ import { KalturaClient } from '@kaltura-ng/kaltura-client/kaltura-client.service
 import { KalturaClientConfiguration } from '@kaltura-ng/kaltura-client/kaltura-client-configuration.service';
 import { HttpModule } from '@angular/http';
 import { LoginService } from './services/login.service';
-import { MetadataService } from './services/metadata.service';
+import { EntryDetailsService } from './services/entry-details.service';
 
 export function KalturaConfigurationFactory()
 {
@@ -39,7 +39,7 @@ export function KalturaConfigurationFactory()
   providers: [
      KalturaClient, 
      LoginService,
-     MetadataService,
+     EntryDetailsService,
     {  
       provide : KalturaClientConfiguration,
       useFactory : KalturaConfigurationFactory
