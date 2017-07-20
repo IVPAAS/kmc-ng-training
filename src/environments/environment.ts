@@ -6,5 +6,5 @@
 export const environment = {
   production: false,
   ks: "",
-  entryDetails: null
+  entryDetails: {entryId: "1_cgfsc7bt"}
 };
