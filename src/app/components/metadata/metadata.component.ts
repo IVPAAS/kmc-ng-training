@@ -20,7 +20,7 @@ export class MetaDataComponent implements OnInit , OnDestroy{
   entry: KalturaMediaEntry;
 
   constructor(private entrySectionsService: EntrySectionsService,
-    private metadataService: EntryDetailsService) { }
+    private entryDetailsService: EntryDetailsService) { }
 
   ngOnInit() {
     this.metadataForm = new FormGroup(
@@ -42,13 +42,13 @@ export class MetaDataComponent implements OnInit , OnDestroy{
       this.entrySectionsService.updateSectionState(SectionTypes.Metadata, this.metadataForm.dirty, this.metadataForm.valid);
     });
 
-    this.subscription = this.metadataService.entry$.subscribe(
+    this.subscription = this.entryDetailsService.entry$.subscribe(
       (x) => {
         this.entry = x.entry
       }
     );
     
-    this.metadataService.getMetadata("");
+    this.entryDetailsService.getMetadata("");
 
   }
 

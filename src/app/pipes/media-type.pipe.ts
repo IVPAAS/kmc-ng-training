@@ -1,6 +1,6 @@
 import { Pipe } from '@angular/core';
 
-@Pipe({ name: 'mediaType' })
+@Pipe({ name: 'kMediaType' })
 export class MediaTypePipe {
     transform(status: number) {
         switch (status) {

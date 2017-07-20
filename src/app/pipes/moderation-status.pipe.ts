@@ -1,6 +1,6 @@
 import { Pipe } from '@angular/core';
 
-@Pipe({ name: 'moderationStatus' })
+@Pipe({ name: 'kModerationStatus' })
 export class ModerationStatusPipe {
     transform(status: number) {
         switch (status) {
