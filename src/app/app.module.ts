@@ -13,6 +13,8 @@ import { KalturaClientConfiguration } from '@kaltura-ng/kaltura-client/kaltura-c
 import { HttpModule } from '@angular/http';
 import { LoginService } from './services/login.service';
 import { EntryDetailsService } from './services/entry-details.service';
+import { ModerationStatusPipe } from './pipes/moderation-status.pipe';
+import { MediaTypePipe } from './pipes/media-type.pipe';
 
 export function KalturaConfigurationFactory()
 {
@@ -29,7 +31,9 @@ export function KalturaConfigurationFactory()
     PreviewComponent,
     MetaDataComponent,
     EntryDetailsComponent ,
-    LoginComponent
+    LoginComponent,
+    ModerationStatusPipe,
+    MediaTypePipe
   ],
   imports: [ 
     BrowserModule,
@@ -39,7 +43,7 @@ export function KalturaConfigurationFactory()
   providers: [
      KalturaClient, 
      LoginService,
-     EntryDetailsService,
+     EntryDetailsService,     
     {  
       provide : KalturaClientConfiguration,
       useFactory : KalturaConfigurationFactory

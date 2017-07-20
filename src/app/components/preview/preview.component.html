@@ -18,27 +18,27 @@
     </div>
     <div class="itemDetails">
       <div class="txt">Creator</div>
-      <div>{{entry.creatorId}}</div>
+      <div>{{entry?.creatorId}}</div>
     </div>
     <div class="itemDetails">
       <div class="txt">Creation date</div>
-      <div>{{entry.createdAt | date}}</div>
+      <div>{{entry?.createdAt | date}}</div>
     </div>
     <div class="itemDetails">
       <div class="txt">Type</div>
-      <div></div>
+      <div>{{entry?.mediaType | mediaType}}</div>
     </div>
     <div class="itemDetails">
       <div class="txt">Duration</div>
-      <div></div>
+      <div>{{entry?.duration/100}}</div>
     </div>
     <div class="itemDetails">
       <div class="txt">Moderation</div>
-      <div>{{entry.moderationStatus}}</div>
+      <div>{{entry?.moderationStatus | moderationStatus}}</div>
     </div>
     <div class="itemDetails">
       <div class="txt">Plays</div>
-      <div></div>
+      <div>{{entry?.plays}}</div>
     </div>
   </div>
 </div>
