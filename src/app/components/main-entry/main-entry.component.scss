@@ -11,6 +11,7 @@
     flex-direction: column;
     margin-left: 100px;
     margin-right: 100px;
+  
     /* HEADER */
     .header {
       display: flex;
@@ -65,7 +66,7 @@
       .jumpto {
         position: fixed;
         right: 500px;
-        top: 268px;
+        top: 400px;
         span {
           float: right;
           margin-left: 15px;

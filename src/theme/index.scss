@@ -3,7 +3,8 @@
 @import './icons/style.scss';
 @import "../app/_variables.scss";
 @import "../app/_mixins.scss";
-input[type=text] {
+input[type=text],
+input[type="password"] {
   height: 30px;
   background: $input_background_color;
   border: none;

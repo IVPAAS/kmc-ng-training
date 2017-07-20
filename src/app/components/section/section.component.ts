@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { EntryDetailsService, EntryDetailsSection } from '../../services/entry-section.service';
-import { Subscription } from 'rxjs';
+import { EntrySectionsService, EntryDetailsSection } from '../../services/entry-section.service';
+import { Subscription, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-section-selector',
@@ -10,19 +10,19 @@ import { Subscription } from 'rxjs';
 export class SectionComponent implements OnDestroy, OnInit {
 
   sections: EntryDetailsSection[];
-  subscription: Subscription;
+  sectionSubscription: Subscription;
 
-  constructor(private sectionItemService: EntryDetailsService) { }
+  constructor(private sectionItemService: EntrySectionsService) { }
 
   ngOnInit() {
-    this.subscription = this.sectionItemService.sections$.subscribe(
+    this.sectionSubscription = this.sectionItemService.sections$.subscribe(
       (value) => {
         this.sections = value.sections;
       });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.sectionSubscription.unsubscribe();
   }
 
   changeSelection(section: EntryDetailsSection) {

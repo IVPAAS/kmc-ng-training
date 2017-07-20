@@ -1,17 +1,19 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
-import { EntryDetailsService, SectionTypes } from '../../services/entry-section.service';
-import { Subject } from 'rxjs/Subject';
+import { LoginService } from '../../services/login.service';
+import { Subject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login-selector',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   form: FormGroup;
+  loginSubscription: Subscription;
+  ks: string;
 
-  constructor(private sectionItemService: EntryDetailsService) {
+  constructor(private loginService: LoginService) {
   }
 
   ngOnInit() {
@@ -25,9 +27,26 @@ export class LoginComponent implements OnInit {
       ])),
     });
 
+    // listen to login result
+    this.loginSubscription = this.loginService.userContext$.subscribe(
+      (value) => {
+        if (value !== null && value.userContext !== null && value.userContext.ks !== null) {
+          this.ks = value.userContext.ks;
+        }
+      },
+      (e) => {
+        console.log(`received error: ${e}`);
+      }
+    );
   }
 
+  // destroy subscriptions
+  ngOnDestroy() {
+    this.loginSubscription.unsubscribe();
+  }
+
+  // call login service
   onSubmit(metaData) {
-    this.sectionItemService.login(metaData.entry_id, metaData.username, metaData.password);
+    this.loginService.login(metaData.username, metaData.password);
   }
 }

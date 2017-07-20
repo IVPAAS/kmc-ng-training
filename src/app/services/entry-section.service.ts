@@ -1,5 +1,7 @@
 import { BehaviorSubject } from 'rxjs';
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
+import { KalturaClient } from '@kaltura-ng/kaltura-client';
+import { UserLoginByLoginIdAction } from 'kaltura-typescript-client/types/UserLoginByLoginIdAction';
 
 export interface EntryDetailsSection {
     key: SectionTypes;
@@ -20,7 +22,8 @@ export enum SectionTypes {
     Related
 }
 
-export class EntryDetailsService {
+@Injectable()
+export class EntrySectionsService {
 
     private _sections = new BehaviorSubject<{ sections: EntryDetailsSection[] }>(
         {
@@ -66,9 +69,5 @@ export class EntryDetailsService {
         section.hasErrors = hasErrors;
 
         this._sections.next({ sections: this._sections.getValue().sections });
-    }
-
-    login(entryId: string, username: string, password: string): void {
-        console.log(`entry ID: ${entryId}, username: ${username}, password: ${password}`);
     }
 }

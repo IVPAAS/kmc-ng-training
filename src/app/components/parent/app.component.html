@@ -1,2 +1,8 @@
-   <app-main-entry-selector>
+   <app-main-entry-selector *ngIf="isLoggedIn">
       </app-main-entry-selector>
+
+        <!-- login app-login-selector -->
+    <div class="login_form_container" *ngIf="!isLoggedIn">
+      <app-login-selector>
+      </app-login-selector>
+    </div>
