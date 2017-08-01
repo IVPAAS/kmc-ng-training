@@ -1,7 +1,7 @@
-<div class="preview">
+<div class="preview" *ngIf="entry">
   <div class="item">
     <div class="player">
-      <iframe *ngIf="iframeSrc.length" [src]="iframeSrc | safe" width="274" height="158" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0"></iframe>
+      <iframe *ngIf="_playerSrc.length" [src]="_playerSrc | safe" width="274" height="158" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0"></iframe>
     </div>
     <div class="player ">
       <div class="previewItem">
@@ -16,27 +16,27 @@
     </div>
     <div class="itemDetails">
       <div class="txt">Creator</div>
-      <div>{{entry?.creatorId}}</div>
+      <div>{{entry.creatorId}}</div>
     </div>
     <div class="itemDetails">
       <div class="txt">Creation date</div>
-      <div>{{entry?.createdAt | date}}</div>
+      <div>{{entry.createdAt | date}}</div>
     </div>
     <div class="itemDetails">
       <div class="txt">Type</div>
-      <div>{{entry?.mediaType | kMediaType}}</div>
+      <div>{{entry.mediaType | kMediaType}}</div>
     </div>
     <div class="itemDetails">
       <div class="txt">Duration</div>
-      <div>{{entry?.duration/100}}</div>
+      <div>{{entry.duration/100}}</div>
     </div>
     <div class="itemDetails">
       <div class="txt">Moderation</div>
-      <div>{{entry?.moderationStatus | kModerationStatus}}</div>
+      <div>{{entry.moderationStatus | kModerationStatus}}</div>
     </div>
     <div class="itemDetails">
       <div class="txt">Plays</div>
-      <div>{{entry?.plays}}</div>
+      <div>{{entry.plays}}</div>
     </div>
   </div>
 </div>

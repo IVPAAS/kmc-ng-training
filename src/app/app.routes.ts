@@ -7,24 +7,25 @@ import { AuthCanActivate } from './auth-can-activate.service';
 
 
 const routes: Routes = <Routes>[
-    { path: 'login', component: LoginComponent },
+    {
+        path: 'login', component: LoginComponent
+    },
+    {
+        path: '', redirectTo: '/login', pathMatch: 'full'
+    },
     {
         path: '', canActivate : [AuthCanActivate],
         children: [
             {path: '', component: LoginComponent},
             {
-                path: '',  children: [
-                    {path: 'entries', component: EntriesListComponent},
-                    {path: 'entry/:id', component: EntryDetailsComponent},
-                ]
-            },
-            {
-                path: '**', redirectTo: '/login', pathMatch: 'full'
+                path: '', children: [
+                {path: 'entries', component: EntriesListComponent},
+                {path: 'entry/:id', component: EntryDetailsComponent},
+            ]
             }
+
         ]
-    },
-
-
+    }
 ];
 
 export const routing = RouterModule.forRoot(routes);
