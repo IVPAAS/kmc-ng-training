@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { UserLoginByLoginIdAction } from 'kaltura-typescript-client/types/UserLoginByLoginIdAction';
 import { KalturaClient } from '@kaltura-ng/kaltura-client';
 import { LocalStorageService, SessionStorageService } from 'ng2-webstorage';
@@ -17,7 +18,7 @@ export class AuthenticationService {
     private _state = new BehaviorSubject<{ isBusy: boolean, errorMessage?: string }>({isBusy: false});
     public state$ = this._state.asObservable();
 
-    private _userContext = new BehaviorSubject<UserContext>(null);
+    private _userContext = new ReplaySubject<UserContext>(1);
     public userContext$ = this._userContext.asObservable();
 
     constructor(private _localService: LocalStorageService, private _kalturaClient: KalturaClient, private _router: Router) {
