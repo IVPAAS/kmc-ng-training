@@ -51,26 +51,20 @@ export class EntriesListComponent implements OnInit, OnDestroy {
   private buildQueryRequest(): Observable<KalturaBaseEntryListResponse> {
 
     // Task 4.2 - move this function to the EntriesService
-    try {
-      let filter: KalturaMediaEntryFilter = new KalturaMediaEntryFilter({});
-      let responseProfile: KalturaDetachedResponseProfile = new KalturaDetachedResponseProfile({
-        type: KalturaResponseProfileType.includeFields,
-        fields: 'id,name,thumbnailUrl,mediaType,plays,createdAt,duration,status,startDate,endDate,moderationStatus,tags,categoriesIds,downloadUrl'
-      });
-      let pager: KalturaFilterPager = null;
 
-      // build the request
-      return <any>this._kalturaClient.request(
-          new BaseEntryListAction({
-            filter,
-            pager,
-            responseProfile,
-            acceptedTypes: [KalturaLiveStreamAdminEntry, KalturaLiveStreamEntry, KalturaMediaEntry]
-          })
-      )
-    } catch (err) {
-      return Observable.throw(err);
-    }
+    // Task 1.1 - use 'this._kalturaClient' to execute service BaseEntry Action List with default filter/pager
+    // dont forget to handle errors(!)
+    return Observable.throw(new Error('missing implementation'));
+
+
+    // Task 1.2 - use property 'acceptedTypes' on the action class support KalturaMediaEntry objects
+
+    // Task 1.3 - use 'KalturaDetachedResponseProfile' with the provided properties to reduce payload from the server
+    // check the network to better understand the requirement
+    // class: KalturaDetachedResponseProfile
+    //      property type: KalturaResponseProfileType.includeFields,
+    //      property fields: 'id,name,thumbnailUrl,mediaType,plays,createdAt,duration,status,startDate,endDate,moderationStatus,tags,categoriesIds,downloadUrl'
+    //
 
   }
 
@@ -86,7 +80,9 @@ export class EntriesListComponent implements OnInit, OnDestroy {
         response =>
         {
           this._isLoading = false;
-          const invalidEntry = response.objects.find(entry => !(entry instanceof KalturaMediaEntry));
+
+          // Task 1.2 - use Array.find to get first entry which is not of type KalturaMediaEntry
+          const invalidEntry = null;
 
           if (invalidEntry)
           {
