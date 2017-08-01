@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { KalturaClient } from '@kaltura-ng/kaltura-client';
 import { BaseEntryGetAction } from 'kaltura-typescript-client/types/BaseEntryGetAction';
 import { KalturaMediaEntry } from 'kaltura-typescript-client/types/KalturaMediaEntry';
 import { AuthenticationService } from './authentication.service';
 import { EntryDetailsSections } from './entry-section-types';
+import { Router, NavigationEnd, Route, ActivatedRoute } from '@angular/router';
+import { ISubscription } from 'rxjs/Subscription';
 
 export interface SectionItem {
     key: EntryDetailsSections;
@@ -23,14 +25,14 @@ export interface DataState
 }
 
 @Injectable()
-export class EntryDetailsService {
+export class EntryDetailsService implements OnDestroy {
 
     private _state = new BehaviorSubject<DataState>({isBusy: false, isValid : true, isDirty : false});
     public state$ = this._state.asObservable();
 
     private _data = new BehaviorSubject<{ entry: KalturaMediaEntry }>({entry: null});
     public data$ = this._data.asObservable();
-
+    private _subscriptions : ISubscription[] = [];
     private _sections = new BehaviorSubject<SectionItem[]>(
         [
             { key: EntryDetailsSections.Metadata, label: EntryDetailsSections[EntryDetailsSections.Metadata], isActive: true, isDirty: false, hasErrors: false, allowed : true },
@@ -41,8 +43,27 @@ export class EntryDetailsService {
     public sections$ = this._sections.asObservable();
 
 
-    constructor(private _kalturaClient: KalturaClient, private _authenticationService: AuthenticationService) {
-        this._load('1_j0w9gcbh');
+
+    constructor(private _kalturaClient: KalturaClient, private _authenticationService: AuthenticationService, private _activatedRoute : ActivatedRoute, private _router: Router) {
+        this._onRouterEvents();
+    }
+
+    private _onRouterEvents() : void {
+        this._subscriptions.push(this._router.events
+            .subscribe(
+                event => {
+                    if (event instanceof NavigationEnd) {
+
+                        // we must defer the loadEntry to the next event cycle loop to allow components
+                        // to init them-selves when entering this module directly.
+                        setTimeout(() =>
+                        {
+                            const currentEntryId = this._activatedRoute.snapshot.params.id;
+                            this._load(currentEntryId);
+                        });
+                    }
+                }
+            ));
     }
 
     private _load(entryId: string): void {
@@ -99,6 +120,13 @@ export class EntryDetailsService {
             this._updateState({isValid: formHasErrors, isDirty : formIsDirty});
             this._sections.next(sections);
         }
+    }
+
+    ngOnDestroy() {
+        this._subscriptions.forEach(subscription =>
+        {
+            subscription.unsubscribe();
+        });
     }
 }
 

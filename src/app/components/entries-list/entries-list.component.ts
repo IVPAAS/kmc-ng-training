@@ -3,6 +3,7 @@ import { ISubscription } from 'rxjs/Subscription';
 import { EntriesService } from '../../services/entries.service';
 import { AreaBlockerMessage } from '@kaltura-ng/kaltura-ui';
 import { KalturaMediaEntry } from 'kaltura-typescript-client/types/KalturaMediaEntry';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'k-entries-list',
@@ -15,7 +16,7 @@ export class EntriesListComponent implements OnInit, OnDestroy {
   public _blockerMessage : AreaBlockerMessage;
   public entries : KalturaMediaEntry[];
   public totalEntriesCount : number;
-  constructor(public _entriesService: EntriesService) { }
+  constructor(public _entriesService: EntriesService, private _router: Router) { }
 
   ngOnInit() {
     this._subscriptions.push(this._entriesService.entries$.subscribe(
@@ -25,6 +26,15 @@ export class EntriesListComponent implements OnInit, OnDestroy {
           this.totalEntriesCount = data.totalCount;
         })
     );
+  }
+
+  public _reload() : void{
+    this._entriesService.reload();
+  }
+
+  public openEntry(id : string) : void
+  {
+    this._router.navigate(['entry',id]);
   }
 
   ngOnDestroy() {

@@ -17,12 +17,13 @@ const routes: Routes = <Routes>[
                     {path: 'entries', component: EntriesListComponent},
                     {path: 'entry/:id', component: EntryDetailsComponent},
                 ]
+            },
+            {
+                path: '**', redirectTo: '/login', pathMatch: 'full'
             }
         ]
     },
-    {
-        path: '', redirectTo: '/login', pathMatch: 'full'
-    }
+
 
 ];
 

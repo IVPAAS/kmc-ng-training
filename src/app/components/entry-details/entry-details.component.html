@@ -1,7 +1,7 @@
   <div class="wrapper">
     <div class="header">
       <div class="headerLeft">
-        <span class="backBtn kIconarrow_backward"></span>
+        <span class="backBtn kIconarrow_backward" (click)="backToList()"></span>
         <span class="kIconvideo"></span>
         <span class="title" *ngIf="entry">{{entry.name}}</span>
       </div>

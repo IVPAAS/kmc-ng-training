@@ -1,7 +1,7 @@
 <div class="section">
   <div class="item" 
   *ngFor="let sectionItem of (_entryDetailsService.sections$ | async)"
-       [class.disabled]="!sectionItem.allowed"
+       [class.sectionDisabled]="!sectionItem.allowed"
   [class.active]="sectionItem.isActive" 
   (click)="onSelect(sectionItem)">
     <span id={{sectionItem.key}}> {{sectionItem.label}}</span>

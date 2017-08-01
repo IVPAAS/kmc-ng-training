@@ -1,5 +1,5 @@
 <div *ngIf="isAuthenticated">
-    <div>
+    <div class="kMenu">
         {{ (_authenticationService.userContext$ | async).fullname }} | <a (click)="logout()">logout</a>
     </div>
 </div>

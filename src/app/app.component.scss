@@ -1,6 +1,9 @@
 @import '../theme/_colors.scss';
 @import '../theme/_mixins.scss';
-body { 
-  margin: 0;
-  font-family: 'Lato';
+
+.kMenu
+{
+  float: right;
+  margin-right: 20px;
+  margin-top: 10px;
 }

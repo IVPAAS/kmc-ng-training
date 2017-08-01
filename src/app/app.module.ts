@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { DataTableModule } from 'primeng/primeng';
+import { DataTableModule, ButtonModule } from 'primeng/primeng';
 import { AppComponent } from './app.component';
 import { SectionComponent } from './components/section/section.component';
 import { PreviewComponent } from './components/preview/preview.component';
@@ -22,6 +22,7 @@ import { EntriesListComponent } from './components/entries-list/entries-list.com
 import { KalturaUIModule, AreaBlockerModule, TooltipModule } from '@kaltura-ng/kaltura-ui';
 import { AuthCanActivate } from './auth-can-activate.service';
 import { routing } from './app.routes';
+import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 
 export function KalturaConfigurationFactory() {
   const configuration = new KalturaClientConfiguration();
@@ -47,8 +48,10 @@ export function KalturaConfigurationFactory() {
     ReactiveFormsModule,
     KalturaUIModule,
     DataTableModule,
+    ButtonModule,
     routing,
     FormsModule,
+    InputTextModule,
     Ng2Webstorage,
     AreaBlockerModule,
     TooltipModule,
