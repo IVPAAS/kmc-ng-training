@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { EntryDetailsService } from '../../services/entry-details.service';
 import { ISubscription } from 'rxjs/Subscription';
 import { KalturaMediaEntry } from 'kaltura-typescript-client/types/KalturaMediaEntry';
@@ -9,6 +9,7 @@ import { KalturaMediaEntry } from 'kaltura-typescript-client/types/KalturaMediaE
   styleUrls: ['./preview.component.scss']
 })
 export class PreviewComponent implements OnInit {
+  @Input() iframeSrc: string;
   subscription: ISubscription;
   entry: KalturaMediaEntry;
 

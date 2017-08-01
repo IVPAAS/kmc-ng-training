@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export interface UserContext {
     ks: string;
     fullname: string;
+    partnerId: number;
 }
 
 @Injectable()
@@ -41,7 +42,7 @@ export class AuthenticationService {
                         response => {
 
                             this._state.next({isBusy: false});
-                            this._updateState(ks, response.fullName);
+                            this._updateState(ks, response.fullName, response.partnerId);
                         },
                         error => {
                             console.log(error.message);
@@ -58,13 +59,13 @@ export class AuthenticationService {
         this._router.navigate(['login']);
     }
 
-    private _updateState(ks: string, fullname?: string): void {
+    private _updateState(ks: string, fullname?: string, partnerId?: number): void {
 
         if (ks) {
             this._localService.store('auth.ks', ks);
 
             this._kalturaClient.ks = ks;
-            this._userContext.next({ks, fullname});
+            this._userContext.next({ks, fullname, partnerId});
         } else {
             this._localService.clear('auth.ks');
             this._kalturaClient.ks = null;
@@ -91,7 +92,7 @@ export class AuthenticationService {
                         this._state.next({isBusy: false, errorMessage: 'please try again'});
                     } else {
                         this._state.next({isBusy: false});
-                        this._updateState(responses[0].result, responses[1].result.fullName);
+                        this._updateState(responses[0].result, responses[1].result.fullName, responses[1].result.partnerId);
                     }
                 }
             );
