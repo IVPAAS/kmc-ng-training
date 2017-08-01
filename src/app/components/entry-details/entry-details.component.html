@@ -1,10 +1,9 @@
-<form [formGroup]="mainForm">
   <div class="wrapper">
     <div class="header">
       <div class="headerLeft">
         <span class="backBtn kIconarrow_backward"></span>
         <span class="kIconvideo"></span>
-        <span class="title" *ngIf="entry?.name">{{entry?.name}}</span>
+        <span class="title" *ngIf="entry">{{entry.name}}</span>
       </div>
       <div class="headerRight">
         <button class="btnSave" [disabled]="!isValid">Save</button>
@@ -18,4 +17,3 @@
       <k-preview></k-preview>
     </div>
   </div>
-</form>

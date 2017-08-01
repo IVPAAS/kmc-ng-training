@@ -1,37 +1,35 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { LoginService } from './services/login.service';
-import { Subscription } from 'rxjs';
+import { AuthenticationService } from './services/authentication.service';
+import { ISubscription } from 'rxjs/Subscription';
 
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit , OnDestroy{
-  title = 'app';
+export class AppComponent implements OnInit, OnDestroy {
+    title = 'app';
 
-  isValid: boolean = false;
-  subscription: Subscription;
+    isAuthenticated: boolean = false;
+    subscription: ISubscription;
 
-  constructor(private loginService: LoginService) {    
-   }
+    constructor(private _authenticationService: AuthenticationService) {
+    }
 
-  ngOnInit() {        
-    this.subscription = this.loginService.userContext$.subscribe(
-      (value) => {        
-        if (value !== null && value.userContext !== null && value.userContext.ks !== null) {          
-          this.isValid = true;          
-        }
-      },
-      (e) => {
-        console.log(`received error: ${e}`);
-        this.isValid = false;
-      }
-    );
-  }
+    public logout() : void
+    {
+        this._authenticationService.logout();
+    }
 
-  ngOnDestroy() {
-   this.subscription.unsubscribe();
- }
+    ngOnInit() {
+        this.subscription = this._authenticationService.userContext$.subscribe(
+            (userContext) => {
+                this.isAuthenticated = userContext && !!userContext.ks;
+            });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
 }

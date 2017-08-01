@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { EntryDetailsService } from '../../services/entry-details.service';
-import { Subscription } from 'rxjs';
+import { ISubscription } from 'rxjs/Subscription';
 import { KalturaMediaEntry } from 'kaltura-typescript-client/types/KalturaMediaEntry';
 
 @Component({
@@ -9,13 +9,13 @@ import { KalturaMediaEntry } from 'kaltura-typescript-client/types/KalturaMediaE
   styleUrls: ['./preview.component.scss']
 })
 export class PreviewComponent implements OnInit {
-  subscription: Subscription;
+  subscription: ISubscription;
   entry: KalturaMediaEntry;
 
-  constructor(private metadataService: EntryDetailsService) { }
+  constructor(private entryDetailsService: EntryDetailsService) { }
 
   ngOnInit() {
-    this.subscription = this.metadataService.entry$.subscribe(
+    this.subscription = this.entryDetailsService.data$.subscribe(
       (x) => {
         this.entry = x.entry
       }

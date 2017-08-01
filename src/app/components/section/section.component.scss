@@ -20,4 +20,9 @@
     background-color: $activeBackgroundColor;
     font-weight: bold;
   }
+
+  .disabled {
+    color:darkgray;
+    cursor: default;
+  }
 }

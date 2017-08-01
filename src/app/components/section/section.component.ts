@@ -1,8 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { EntrySectionsService } from '../../services/entry-sections.service';
-import { SectionItem } from '../../services/entry-sections.service';
-import { Subscription } from 'rxjs';
-import { KalturaBaseEntry } from 'kaltura-typescript-client/types/KalturaBaseEntry';
+import { ISubscription } from 'rxjs/Subscription';
+import { SectionItem, EntryDetailsService } from '../../services/entry-details.service';
 
 @Component({
   selector: 'k-section',
@@ -11,25 +9,21 @@ import { KalturaBaseEntry } from 'kaltura-typescript-client/types/KalturaBaseEnt
 })
 
 export class SectionComponent implements OnInit, OnDestroy {
-  subscription: Subscription;
+  subscription: ISubscription;
   sections: SectionItem[];
-  constructor(private entrySectionsService: EntrySectionsService) { }
+  constructor(public _entryDetailsService : EntryDetailsService) { }
 
   ngOnInit() {
-    this.subscription = this.entrySectionsService.sections$.subscribe(
-      (x) => {
-        this.sections = x.sectionItems
-      }
-    );
+
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 
   onSelect(section: SectionItem): void {
-    this.sections.forEach(sectionItem => sectionItem.isActive = false);
-    section.isActive = true;
+    if (section.allowed) {
+
+    }
   }
 }
 

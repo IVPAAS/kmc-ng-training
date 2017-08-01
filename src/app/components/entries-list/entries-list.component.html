@@ -1,0 +1,61 @@
+<k-area-blocker [showLoader]="(_entriesService.state$ | async)?.isBusy" [message]="_blockerMessage">
+    <div class="kEntries kOverrideFAIcons">
+        <div #entriesTableHolder class="kEntriesHolder kContent">
+            <div class="kEntriesTableFilters">
+
+                <span class="kSelectedEntriesNum" *ngIf="totalEntriesCount">{{ totalEntriesCount }} Entries</span>
+
+                <div class="kFilters">
+                    <input type="text" class="kSearchInput"
+                           (keyup.enter)="onFreetextChanged()"
+                           placeholder="Search Entries">
+                    <button pButton class="kButtonDefault kRefreshBtn small" type="text" (click)="_reload()"
+                            icon="kIconrefresh" [kTooltip]="'Reload'"></button>
+                </div>
+
+            </div>
+            <div class="kEntriesTable">
+                <p-dataTable #dataTable [value]="entries"
+                             scrollable="true" scrollHeight="100%">
+                    <p-column [style]="{'width':'44px', 'padding-left': '14px'}" selectionMode="multiple"></p-column>
+                    <p-column field="thumbnailUrl" header="thumbnail" [style]="{'width':'100px'}">
+                        <ng-template let-col let-entry="rowData" pTemplate="body">
+                            <div class="kThumbnailHolder"
+                                 (click)="onActionSelected('view',entry.id,entry.mediaType,entry.status)"><img
+                                    src="{{entry[col.field]}}" onError="this.onerror=null;this.style.display='none'">
+                            </div>
+                        </ng-template>
+                    </p-column>
+                    <p-column field="name" header="name" [sortable]="'custom'">
+                        <ng-template let-col let-entry="rowData" pTemplate="body">
+                            <span class="kTitle"
+                                  (click)="onActionSelected('view',entry.id,entry.mediaType,entry.status)">{{entry[col.field]}}</span>
+                        </ng-template>
+                    </p-column>
+                    <p-column field="id" header="ID" [sortable]="false" [style]="{'width':'100px'}"></p-column>
+                    <p-column field="mediaType" header="type" [sortable]="'custom'"
+                              [style]="{'width':'80px', 'text-align': 'center'}">
+                        <ng-template let-col let-entry="rowData" pTemplate="body">
+                            <div [kTooltip]="entry[col.field]"></div>
+                        </ng-template>
+                    </p-column>
+                    <p-column field="plays" header="plays" [sortable]="'custom'" [style]="{'width':'76px'}"></p-column>
+                    <p-column field="createdAt" header="Created On" [sortable]="true" [style]="{'width':'140px'}">
+                        <ng-template let-col let-entry="rowData" pTemplate="body">
+                            <span>{{entry[col.field] | date}}</span>
+                        </ng-template>
+                    </p-column>
+                    <p-column header="" [style]="{'overflow':'visible', 'width':'80px'}">
+                        <ng-template let-col let-entry="rowData" pTemplate="body">
+                            <div class="kEntriesTableActions">
+                                <button type="button" pButton icon="kIconmore"
+                                        (click)="openActionsMenu($event, entry)"></button>
+                            </div>
+                        </ng-template>
+                    </p-column>
+                </p-dataTable>
+            </div>
+        </div>
+    </div>
+</k-area-blocker>
+

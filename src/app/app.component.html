@@ -5,10 +5,14 @@
 </head>
 
 <body>
-  <div *ngIf="isValid">
-    <k-entry-details></k-entry-details>
+  <div *ngIf="isAuthenticated">
+    <div>
+      <a (click)="logout()">logout</a>
+    </div>
+    <!--<k-entry-details></k-entry-details>-->
+    <k-entries-list></k-entries-list>
   </div>
-  <div *ngIf="!isValid">
+  <div *ngIf="!isAuthenticated">
     <k-login></k-login>
   </div>
 </body>

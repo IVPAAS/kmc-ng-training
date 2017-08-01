@@ -1,19 +1,18 @@
 <form [formGroup]="loginForm">
   <div class="login">
     <div class="item">
-      <div class="txt">Entry ID</div>
-      <div><input type="text" class="inputTxt" name="entryId" id="entryId" formControlName="entryId"> </div>
-    </div>
-    <div class="item">
       <div class="txt">Username</div>
-      <div><input type="text" class="inputTxt" name="userName" id="userName" formControlName="userName"> </div>
+      <div><input type="text" class="inputTxt" formControlName="userName"> </div>
     </div>
     <div class="item">
       <div class="txt">Password</div>
-      <div><input type="text" class="inputTxt" name="password" id="password" formControlName="password"> </div>
+      <div><input type="password" class="inputTxt" formControlName="password"> </div>
     </div>
     <div class="item">
-      <button class="btnSave" (click)="login()">Save</button>
+      <button class="btnSave" (click)="login()" [disabled]="(_loginService.state$ | async)?.isBusy">Save</button>
+    </div>
+    <div class="kError">
+      {{ (_loginService.state$ | async)?.errorMessage}}
     </div>
   </div>
 </form>

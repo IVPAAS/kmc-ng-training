@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+import { DataTableModule } from 'primeng/primeng';
 import { AppComponent } from './app.component';
 import { SectionComponent } from './components/section/section.component';
 import { PreviewComponent } from './components/preview/preview.component';
@@ -11,14 +12,19 @@ import { LoginComponent } from './components/login/login.component';
 import { KalturaClient } from '@kaltura-ng/kaltura-client/kaltura-client.service';
 import { KalturaClientConfiguration } from '@kaltura-ng/kaltura-client/kaltura-client-configuration.service';
 import { HttpModule } from '@angular/http';
-import { LoginService } from './services/login.service';
+import { AuthenticationService } from './services/authentication.service';
 import { EntryDetailsService } from './services/entry-details.service';
 import { ModerationStatusPipe } from './pipes/moderation-status.pipe';
 import { MediaTypePipe } from './pipes/media-type.pipe';
+import { Ng2Webstorage } from 'ng2-webstorage';
+import { EntriesService } from './services/entries.service';
+import { EntriesListComponent } from './components/entries-list/entries-list.component';
+import { KalturaUIModule, AreaBlockerModule, TooltipModule } from '@kaltura-ng/kaltura-ui';
+
 
 export function KalturaConfigurationFactory() {
   const configuration = new KalturaClientConfiguration();
-  configuration.clientTag = 'anat';
+  configuration.clientTag = 'rxjs-workshop';
   configuration.endpointUrl = "https://www.kaltura.com/api_v3/index.php";
   return configuration;
 }
@@ -29,6 +35,7 @@ export function KalturaConfigurationFactory() {
     SectionComponent,
     PreviewComponent,
     MetaDataComponent,
+    EntriesListComponent,
     EntryDetailsComponent,
     LoginComponent,
     ModerationStatusPipe,
@@ -37,12 +44,17 @@ export function KalturaConfigurationFactory() {
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    KalturaUIModule,
+    DataTableModule,
+    FormsModule,
+    Ng2Webstorage,
+    AreaBlockerModule,
+    TooltipModule,
     HttpModule
   ],
   providers: [
     KalturaClient,
-    LoginService,
-    EntryDetailsService,
+    AuthenticationService,
     { provide: KalturaClientConfiguration, useFactory: KalturaConfigurationFactory }
   ],
   bootstrap: [AppComponent]

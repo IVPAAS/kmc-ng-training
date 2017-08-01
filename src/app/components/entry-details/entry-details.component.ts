@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { EntrySectionsService } from '../../services/entry-sections.service';
-import { Subscription } from 'rxjs';
+import { ISubscription } from 'rxjs/Subscription';
 import { KalturaMediaEntry } from 'kaltura-typescript-client/types/KalturaMediaEntry';
 import { EntryDetailsService } from '../../services/entry-details.service';
 
@@ -9,37 +8,26 @@ import { EntryDetailsService } from '../../services/entry-details.service';
   selector: 'k-entry-details',
   templateUrl: './entry-details.component.html',
   styleUrls: ['./entry-details.component.scss'],
-  providers: [EntrySectionsService],
+  providers: [EntryDetailsService],
 })
 export class EntryDetailsComponent implements OnInit, OnDestroy {
-  mainForm: FormGroup;
-  isValid: boolean;
-  entrySectionsServiceSubscription: Subscription;
-  entry: KalturaMediaEntry;
-  metadataServiceSubscription: Subscription;
+  entry : KalturaMediaEntry = null;
+  private _subscriptions : ISubscription[] = [];
 
-
-  constructor(private entrySectionsService: EntrySectionsService,
-    private metadataService: EntryDetailsService) { }
+  constructor(private entryDetailsService: EntryDetailsService) { }
 
   ngOnInit() {
-    this.mainForm = new FormGroup({});
-
-    this.entrySectionsServiceSubscription = this.entrySectionsService._isDataValid$.subscribe(
-      (x) => {
-        this.isValid = x.isValid;
+    this._subscriptions.push(this.entryDetailsService.data$.subscribe(
+      (data) => {
+        this.entry = data.entry;
       }
-    );
-
-    this.metadataServiceSubscription = this.metadataService.entry$.subscribe(
-      (x) => {
-        this.entry = x.entry
-      }
-    );
+    ));
   }
 
   ngOnDestroy() {
-    this.entrySectionsServiceSubscription.unsubscribe();
-    this.metadataServiceSubscription.unsubscribe();
+    this._subscriptions.forEach(subscription =>
+    {
+      subscription.unsubscribe();
+    });
   }
 }
