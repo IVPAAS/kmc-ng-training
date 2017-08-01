@@ -1,0 +1,69 @@
+.kEntries {
+  font-size: 15px;
+  padding-top: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0px;
+  button{
+    color: grey;
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    outline: 0;
+  }
+  .kEntriesHolder {
+    height: 100%;
+    border: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .kRefreshBtn {
+    font-size: 24px;
+    border: none;
+    min-width: inherit;
+    margin-right: 16px;
+    width: 40px;
+    outline: 0;
+    &:active {
+      box-shadow: none;
+      transform: rotate(45deg);
+    }
+    &:hover {
+      background-color: #ffffff;
+    }
+  }
+  .kEntriesTableFilters {
+    width: 100%;
+    height: 66px;
+    background-color: white;
+    flex: 0 0 auto;
+    align-items: center;
+    margin-left: 0px;
+    border-bottom: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    display: flex;
+    .kSelectedEntriesNum {
+      padding-left: 16px;
+    }
+  }
+
+  .kEntriesTable {
+    border: none;
+    position: relative;
+    background-color: white;
+    flex: 1 1 auto;
+  }
+
+  .kFilters {
+    display: flex;
+    margin-left: auto;
+    input {
+      padding-left: 4px;
+    }
+  }
+
+}

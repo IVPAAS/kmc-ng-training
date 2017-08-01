@@ -42,7 +42,7 @@ export class EntryDetailsService {
 
 
     constructor(private _kalturaClient: KalturaClient, private _authenticationService: AuthenticationService) {
-        this._load('1_j0w9gcbh');
+        this._load('1_2a9qa5vm');
     }
 
     private _load(entryId: string): void {

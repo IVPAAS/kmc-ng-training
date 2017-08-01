@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { DataTableModule } from 'primeng/primeng';
+import { DataTableModule, ButtonModule } from 'primeng/primeng';
 import { AppComponent } from './app.component';
 import { SectionComponent } from './components/section/section.component';
 import { PreviewComponent } from './components/preview/preview.component';
@@ -46,6 +46,7 @@ export function KalturaConfigurationFactory() {
     ReactiveFormsModule,
     KalturaUIModule,
     DataTableModule,
+    ButtonModule,
     FormsModule,
     Ng2Webstorage,
     AreaBlockerModule,
