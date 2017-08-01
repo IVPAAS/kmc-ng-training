@@ -16,6 +16,8 @@ export class EntriesListComponent implements OnInit, OnDestroy {
   public _blockerMessage : AreaBlockerMessage;
   public entries : KalturaMediaEntry[];
   public totalEntriesCount : number;
+  public showLoading : boolean = false;
+
   constructor(public _entriesService: EntriesService, private _router: Router) { }
 
   ngOnInit() {
@@ -24,6 +26,30 @@ export class EntriesListComponent implements OnInit, OnDestroy {
         {
           this.entries = data.items;
           this.totalEntriesCount = data.totalCount;
+        })
+    );
+
+    this._subscriptions.push(this._entriesService.state$.subscribe(
+        state =>
+        {
+          this.showLoading = state.loading;
+
+          if (state.errorMessage)
+          {
+             this._blockerMessage = new AreaBlockerMessage({
+               message : state.errorMessage,
+               buttons : [ {
+                 label : 'retry',
+                 action: () =>
+                 {
+                   this._entriesService.reload();
+                 }
+               }]
+             }
+             );
+          }else {
+            this._blockerMessage = null;
+          }
         })
     );
   }

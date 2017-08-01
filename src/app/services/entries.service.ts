@@ -60,6 +60,11 @@ export class EntriesService implements OnDestroy {
             this._entriesExecuteSubscription = null;
         }
 
+        this._entries.next({
+            items: [],
+            totalCount: 0
+        });
+
         this._state.next({loading: true, errorMessage: null});
 
         // execute the request
