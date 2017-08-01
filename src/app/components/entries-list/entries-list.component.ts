@@ -31,9 +31,14 @@ export class EntriesListComponent implements OnInit, OnDestroy {
   public totalEntriesCount : number;
   public showLoading : boolean = false;
 
+
   constructor(/*public _entriesService: EntriesService,*/ private _router: Router, private _kalturaClient : KalturaClient) { }
 
   ngOnInit() {
+
+    // Task 2.1 - remove this assignment used in previous workshop
+    this._kalturaClient.ks = 'djJ8MjA1MjM3MXwMSq6OpJjTQU6himLjSENOqn06lgjsxocILKZ_dXDY7gEHd4vVLuu1ueeK5YGDkMl32p0_JrjmzbWHTkJZz8yP-ChsH7LSejQ6NNli8yN96q7AksRDPMfbDTQmADq2N6E=';
+
 
     // Task 4.2 - subscribe to EntriesService entries$ changes and update component properties
 

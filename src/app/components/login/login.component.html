@@ -11,10 +11,11 @@
     <div class="item">
       <button class="btnSave" (click)="login()">Login</button>
     </div>
-    <div *ngIf="isBusy">
-      Please wait
+    <div >
+      Task 2.1 - show the message 'please wait' here only during execution of login
     </div>
     <div class="kError">
+      Task 2.1 - show here errorMessage if provided
       {{ errorMessage }}
     </div>
   </div>

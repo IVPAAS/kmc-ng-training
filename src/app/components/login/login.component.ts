@@ -56,7 +56,8 @@ export class LoginComponent implements OnInit, OnDestroy {
                 this.isBusy = false;
 
                 this._kalturaClient.ks = userContext.ks;
-                this._localService.store('userContext',userContext);
+
+                // Task 2.1 - store in the localService (this._localService) with key = 'userContext', value userContext
 
                 this._router.navigate(['entries']);
 
@@ -71,37 +72,22 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     private _login(userName: string, password: string): Observable<{ks : string, partnerId : string, fullName : string}> {
 
+
         // Task 4.1 - this function should move to the AuthenticationService and return 'void' instead.
         // since we want to use persist state with BehaviorSubject
 
         return Observable.create(observer =>
         {
-            if (userName && password) {
 
-                this._kalturaClient.multiRequest([
-                    new UserLoginByLoginIdAction(
-                        {
-                            loginId: userName,
-                            password: password
-                        }
-                    ),
-                    new UserGetAction({}).setDependency((['ks', 0]))]).subscribe(
-                    responses => {
-                        if (responses.hasErrors()) {
-                            observer.error(new Error('please try again'));
-                        } else {
-                            observer.next({
-                                ks : responses[0].result,
-                                fullName: responses[1].result.fullName,
-                                partnerId: responses[1].result.partnerId
-                            });
-                            observer.complete();
-                        }
-                    }
-                );
-            } else {
-                observer.error(new Error('missing one of the form arguments'));
-            }
+            // Task 2.1 - implement
+            // pseudo code:
+            // 1 - if provided userName and password then
+            // 1.1 - use multiRequest to execute both 'UserLoginByLoginIdAction' and 'UserGetAction'
+            //       tip - on the 'UserGetAction' chain '.setDependency((['ks', 0]))])' so it will get the KS from the first action
+            // 1.2 - use the '.hasErrors()' function on the responses to check if authentication succeeded
+            // 1.3 - if succeeded then exeute observer.next and observer.complete
+            // 2 - if NOT provided userName and password then execute observer.error
+
         });
     }
 
