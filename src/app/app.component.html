@@ -7,7 +7,7 @@
 <body>
   <div *ngIf="isAuthenticated">
     <div>
-      <a (click)="logout()">logout</a>
+      {{ (_authenticationService.userContext$ | async).fullname }} | <a (click)="logout()">logout</a>
     </div>
     <!--<k-entry-details></k-entry-details>-->
     <k-entries-list></k-entries-list>
