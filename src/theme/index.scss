@@ -3,9 +3,14 @@
 @import './icons/style.scss';
 @import './_colors.scss';
 @import './_mixins.scss';
+
+/* Task 3.1 - import theme into the application and then uncomment those line
+npm install this library https://www.npmjs.com/package/@kaltura-ng/mc-theme
 $mc-theme-font-path : '~@kaltura-ng/mc-theme/themes/default/fonts';
 @import '~@kaltura-ng/mc-theme/themes/default/scss/variables';
 @import '~@kaltura-ng/mc-theme/themes/default/scss/index.scss';
+*/
+
 button {
   border: solid;
   background-color: $buttonBackgroundColor;

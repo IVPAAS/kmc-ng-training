@@ -96,6 +96,7 @@ export class EntriesListComponent implements OnInit, OnDestroy {
             {
               this._isLoading = false;
               this._showLoadingError(reason.message);
+              console.error(reason.message);
             }
     )
   }

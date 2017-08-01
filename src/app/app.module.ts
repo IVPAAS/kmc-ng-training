@@ -31,6 +31,8 @@ export function KalturaConfigurationFactory() {
   return configuration;
 }
 
+
+// Task 3.1 - import 'AreaBlockerModule'
 // Task 4.1 - register AuthenticationService in app module providers
 
 @NgModule({
@@ -55,7 +57,6 @@ export function KalturaConfigurationFactory() {
     FormsModule,
     InputTextModule,
     Ng2Webstorage,
-    AreaBlockerModule,
     TooltipModule,
     HttpModule
   ],

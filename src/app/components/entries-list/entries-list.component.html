@@ -14,7 +14,8 @@
                 </div>
 
             </div>
-            <k-area-blocker [showLoader]="_isLoading" [message]="_blockerMessage">
+            <!-- Task 3.1 - wrap this element with 'k-area-block' and bind [showLoader] and [message] to relevant properties -->
+
             <div class="kEntriesTable">
                 <p-dataTable #dataTable [value]="entries"
                              scrollable="true" scrollHeight="100%">
@@ -27,11 +28,10 @@
                             </div>
                         </ng-template>
                     </p-column>
+                    <!-- Task 3.1 bind the content of this column to 'openEntry(entry.id)'
+                            note, you will need to use similar solution of the 'ng-template' approach as done in other columns
+                             -->
                     <p-column field="name" header="name" [sortable]="'custom'">
-                        <ng-template let-col let-entry="rowData" pTemplate="body">
-                            <span class="kTitle"
-                                  (click)="openEntry(entry.id)">{{entry[col.field]}}</span>
-                        </ng-template>
                     </p-column>
                     <p-column field="id" header="ID" [sortable]="false" [style]="{'width':'100px'}"></p-column>
                     <p-column field="mediaType" header="type" [sortable]="'custom'"
@@ -41,10 +41,10 @@
                         </ng-template>
                     </p-column>
                     <p-column field="plays" header="plays" [sortable]="'custom'" [style]="{'width':'76px'}"></p-column>
+                    <!-- Task 3.1 use 'date' pipe on the column content
+                           note, you will need to use similar solution of the 'ng-template' approach as done in other columns
+                            -->
                     <p-column field="createdAt" header="Created On" [sortable]="true" [style]="{'width':'140px'}">
-                        <ng-template let-col let-entry="rowData" pTemplate="body">
-                            <span>{{entry[col.field] | date}}</span>
-                        </ng-template>
                     </p-column>
                     <p-column header="" [style]="{'overflow':'visible', 'width':'80px'}">
                         <ng-template let-col let-entry="rowData" pTemplate="body">
@@ -55,7 +55,6 @@
                     </p-column>
                 </p-dataTable>
             </div>
-            </k-area-blocker>
         </div>
     </div>
 
