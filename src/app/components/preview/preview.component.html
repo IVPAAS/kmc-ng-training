@@ -1,9 +1,7 @@
 <div class="preview">
   <div class="item">
     <div class="player">
-      <div class="upload">
-        <button><span class="kIconupload">Upload</span></button>
-      </div>
+      <iframe *ngIf="iframeSrc.length" [src]="iframeSrc | safe" width="274" height="158" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0"></iframe>
     </div>
     <div class="player ">
       <div class="previewItem">
