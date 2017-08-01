@@ -1,20 +1,7 @@
-<html>
-
-<head>
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-</head>
-
-<body>
-  <div *ngIf="isAuthenticated">
+<div *ngIf="isAuthenticated">
     <div>
-      {{ (_authenticationService.userContext$ | async).fullname }} | <a (click)="logout()">logout</a>
+        {{ (_authenticationService.userContext$ | async).fullname }} | <a (click)="logout()">logout</a>
     </div>
-    <!--<k-entry-details></k-entry-details>-->
-    <k-entries-list></k-entries-list>
-  </div>
-  <div *ngIf="!isAuthenticated">
-    <k-login></k-login>
-  </div>
-</body>
+</div>
+<router-outlet></router-outlet>
 
-</html>

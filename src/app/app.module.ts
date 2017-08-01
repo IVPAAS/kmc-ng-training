@@ -20,7 +20,8 @@ import { Ng2Webstorage } from 'ng2-webstorage';
 import { EntriesService } from './services/entries.service';
 import { EntriesListComponent } from './components/entries-list/entries-list.component';
 import { KalturaUIModule, AreaBlockerModule, TooltipModule } from '@kaltura-ng/kaltura-ui';
-
+import { AuthCanActivate } from './auth-can-activate.service';
+import { routing } from './app.routes';
 
 export function KalturaConfigurationFactory() {
   const configuration = new KalturaClientConfiguration();
@@ -46,6 +47,7 @@ export function KalturaConfigurationFactory() {
     ReactiveFormsModule,
     KalturaUIModule,
     DataTableModule,
+    routing,
     FormsModule,
     Ng2Webstorage,
     AreaBlockerModule,
@@ -54,6 +56,7 @@ export function KalturaConfigurationFactory() {
   ],
   providers: [
     KalturaClient,
+    AuthCanActivate,
     AuthenticationService,
     { provide: KalturaClientConfiguration, useFactory: KalturaConfigurationFactory }
   ],

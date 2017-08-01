@@ -4,6 +4,7 @@ import { UserLoginByLoginIdAction } from 'kaltura-typescript-client/types/UserLo
 import { KalturaClient } from '@kaltura-ng/kaltura-client';
 import { LocalStorageService, SessionStorageService } from 'ng2-webstorage';
 import { UserGetAction } from 'kaltura-typescript-client/types/UserGetAction';
+import { Router } from '@angular/router';
 
 export interface UserContext {
     ks: string;
@@ -19,7 +20,7 @@ export class AuthenticationService {
     private _userContext = new BehaviorSubject<UserContext>(null);
     public userContext$ = this._userContext.asObservable();
 
-    constructor(private _localService: LocalStorageService, private _kalturaClient: KalturaClient) {
+    constructor(private _localService: LocalStorageService, private _kalturaClient: KalturaClient, private _router: Router) {
         this._automaticLogin();
     }
 
@@ -53,6 +54,7 @@ export class AuthenticationService {
 
     public logout(): void {
         this._updateState(null);
+        this._router.navigate(['login']);
     }
 
     private _updateState(ks: string, fullname?: string): void {

@@ -9,7 +9,7 @@
       <div><input type="password" class="inputTxt" formControlName="password"> </div>
     </div>
     <div class="item">
-      <button class="btnSave" (click)="login()" [disabled]="(_authenticationService.state$ | async)?.isBusy">Save</button>
+      <button class="btnSave" (click)="login()" [disabled]="(_authenticationService.state$ | async)?.isBusy">Login</button>
     </div>
     <div *ngIf="(_authenticationService.state$ | async)?.isBusy">
       Please wait
