@@ -9,13 +9,13 @@
       <div><input type="password" class="inputTxt" formControlName="password"> </div>
     </div>
     <div class="item">
-      <button class="btnSave" (click)="login()" [disabled]="(_authenticationService.state$ | async)?.isBusy">Login</button>
+      <button class="btnSave" (click)="login()">Login</button>
     </div>
-    <div *ngIf="(_authenticationService.state$ | async)?.isBusy">
+    <div *ngIf="isBusy">
       Please wait
     </div>
     <div class="kError">
-      {{ (_authenticationService.state$ | async)?.errorMessage}}
+      {{ errorMessage }}
     </div>
   </div>
 </form>

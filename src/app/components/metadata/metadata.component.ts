@@ -33,13 +33,9 @@ export class MetaDataComponent implements OnInit , OnDestroy{
       this.entryDetailsService.updateSectionState(EntryDetailsSections.Metadata, this.metadataForm.dirty, this.metadataForm.valid);
     }));
 
-    this._subscriptions.push(this.entryDetailsService.data$.subscribe(
-      (data) => {
-          if (data && data.entry) {
-              this.metadataForm.reset(data.entry);
-          }
-      }
-    ));
+    // Task 4.30 - subscribe to EntryDetailsService and 'reset' metadata form when data retrieved
+      // tip  if you are not sure how to do so, you can find a similar implementation
+      // in file entry-details.component
   }
 
    ngOnDestroy() {

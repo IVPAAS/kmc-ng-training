@@ -14,19 +14,16 @@ export class AppComponent implements OnInit, OnDestroy {
     isAuthenticated: boolean = false;
     subscription: ISubscription;
 
-    constructor(private _authenticationService: AuthenticationService) {
+    constructor(/*private _authenticationService: AuthenticationService*/) {
     }
 
     public logout() : void
     {
-        this._authenticationService.logout();
+        // Task 4.1 - execute logout
     }
 
     ngOnInit() {
-        this.subscription = this._authenticationService.userContext$.subscribe(
-            (userContext) => {
-                this.isAuthenticated = userContext && !!userContext.ks;
-            });
+        // Task 4.1 - show upper menu only when authenticated
     }
 
     ngOnDestroy() {

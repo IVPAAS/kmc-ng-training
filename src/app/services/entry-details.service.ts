@@ -44,7 +44,7 @@ export class EntryDetailsService implements OnDestroy {
 
 
 
-    constructor(private _kalturaClient: KalturaClient, private _authenticationService: AuthenticationService, private _activatedRoute : ActivatedRoute, private _router: Router) {
+    constructor(private _kalturaClient: KalturaClient/*, private _authenticationService: AuthenticationService*/, private _activatedRoute : ActivatedRoute, private _router: Router) {
         this._onRouterEvents();
     }
 

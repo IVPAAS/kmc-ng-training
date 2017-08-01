@@ -26,32 +26,25 @@ export class AuthenticationService {
         this._automaticLogin();
     }
 
+    private _getKSFromCache() : string{
+        return this._localService.retrieve('auth.ks');
+    }
+
+    private _clearKSInCache() : void{
+        this._localService.clear('auth.ks');
+    }
+
+    private _updateKSInCache(ks : string) : void{
+        this._localService.store('auth.ks',ks);
+    }
+
     private _automaticLogin(): void {
-        const localStorageData = this._localService.retrieve('auth.ks');
-        if (localStorageData) {
 
-            const ks = this._localService.retrieve('auth.ks');
-
-            if (ks) {
-                this._state.next({isBusy: true});
-                this._kalturaClient.request(
-                    new UserGetAction({
-                        ks
-                    }))
-                    .subscribe(
-                        response => {
-
-                            this._state.next({isBusy: false});
-                            this._updateState(ks, response.fullName, response.partnerId);
-                        },
-                        error => {
-                            console.log(error.message);
-
-                            this._localService.clear('auth.ks');
-                        }
-                    );
-            }
-        }
+        // Task 4.1 (advanced) - pseudo code:
+        // 1 - get ks from cache using method '_getKSFromCache'
+        // 2 - if got any then update state to busy and execute a UserGetAction with that ks
+        // 3 - if succeded then execute method '_updateState' with the relevant information
+        // 4 - otherwise, clear the ks from the cache.
     }
 
     public logout(): void {
@@ -75,30 +68,19 @@ export class AuthenticationService {
 
     public login(userName: string, password: string): void {
 
-        if (userName && password) {
-            this._updateState(null);
-            this._state.next({isBusy: true});
+        // Task 4.1 - move the function '_login' from 'login.component.ts'
+        // notice that the signature now returns void.
+        // you should update property '_state' instead
+        // pseudo code:
+        // 1 - if provided userName and password then
+        // 1.1 - update '_state' to busy
+        // 1.1 - use multiRequest to execute both 'UserLoginByLoginIdAction' and 'UserGetAction'
+        //       tip - on the 'UserGetAction' chain '.setDependency((['ks', 0]))])' so it will get the KS from the first action
+        // 1.2 - use the '.hasErrors()' function on the responses to check if authentication succeeded
+        // 1.3 - update '_state' to not busy and include error message if needed
+        // 1.4 - run the following to update user context: this._updateState(responses[0].result, responses[1].result.fullName, responses[1].result.partnerId);
+        // 2 - if NOT provided userName and password then update _state with error message
 
-            this._kalturaClient.multiRequest([
-                new UserLoginByLoginIdAction(
-                    {
-                        loginId: userName,
-                        password: password
-                    }
-                ),
-                new UserGetAction({}).setDependency((['ks', 0]))]).subscribe(
-                responses => {
-                    if (responses.hasErrors()) {
-                        this._state.next({isBusy: false, errorMessage: 'please try again'});
-                    } else {
-                        this._state.next({isBusy: false});
-                        this._updateState(responses[0].result, responses[1].result.fullName, responses[1].result.partnerId);
-                    }
-                }
-            );
-        } else {
-            this._state.next({isBusy: false, errorMessage: 'missing one of the form arguments'});
-        }
     }
 }
 

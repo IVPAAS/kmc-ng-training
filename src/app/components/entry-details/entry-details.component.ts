@@ -16,7 +16,7 @@ export class EntryDetailsComponent implements OnInit, OnDestroy {
   entry : KalturaMediaEntry = null;
   private _subscriptions : ISubscription[] = [];
 
-  constructor(private entryDetailsService: EntryDetailsService, private _router: Router, private _authenticationService: AuthenticationService,  private _kalturaClient: KalturaClient) { }
+  constructor(private entryDetailsService: EntryDetailsService, private _router: Router,  private _kalturaClient: KalturaClient) { }
 
   ngOnInit() {
     this._subscriptions.push(this.entryDetailsService.data$.subscribe(

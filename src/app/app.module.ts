@@ -31,6 +31,8 @@ export function KalturaConfigurationFactory() {
   return configuration;
 }
 
+// Task 4.1 - register AuthenticationService in app module providers
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +62,6 @@ export function KalturaConfigurationFactory() {
   providers: [
     KalturaClient,
     AuthCanActivate,
-    AuthenticationService,
     { provide: KalturaClientConfiguration, useFactory: KalturaConfigurationFactory }
   ],
   bootstrap: [AppComponent]

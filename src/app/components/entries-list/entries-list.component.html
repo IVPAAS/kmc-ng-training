@@ -14,7 +14,7 @@
                 </div>
 
             </div>
-            <k-area-blocker [showLoader]="(_entriesService.state$ | async)?.loading" [message]="_blockerMessage">
+            <k-area-blocker [showLoader]="_isLoading" [message]="_blockerMessage">
             <div class="kEntriesTable">
                 <p-dataTable #dataTable [value]="entries"
                              scrollable="true" scrollHeight="100%">

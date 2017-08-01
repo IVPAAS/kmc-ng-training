@@ -87,27 +87,8 @@ export class EntriesService implements OnDestroy {
 
     private buildQueryRequest(): Observable<KalturaBaseEntryListResponse> {
 
-        try {
-            let filter: KalturaMediaEntryFilter = new KalturaMediaEntryFilter({});
-            let responseProfile: KalturaDetachedResponseProfile = new KalturaDetachedResponseProfile({
-                type: KalturaResponseProfileType.includeFields,
-                fields: 'id,name,thumbnailUrl,mediaType,plays,createdAt,duration,status,startDate,endDate,moderationStatus,tags,categoriesIds,downloadUrl'
-            });
-            let pager: KalturaFilterPager = null;
-
-            // build the request
-            return <any>this._kalturaClient.request(
-                new BaseEntryListAction({
-                    filter,
-                    pager,
-                    responseProfile,
-                    acceptedTypes: [KalturaLiveStreamAdminEntry, KalturaLiveStreamEntry]
-                })
-            )
-        } catch (err) {
-            return Observable.throw(err);
-        }
-
+        // Task 4.2 - copy this function content from the component 'entries-list.component.ts'
+        return Observable.throw(new Error('not implemented'));
     }
 }
 
