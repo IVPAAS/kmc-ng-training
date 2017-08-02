@@ -6,14 +6,11 @@ import { KalturaMediaEntry } from 'kaltura-typescript-client/types/KalturaMediaE
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { KalturaBaseEntryListResponse } from 'kaltura-typescript-client/types/KalturaBaseEntryListResponse';
-import { KalturaMediaEntryFilter } from 'kaltura-typescript-client/types/KalturaMediaEntryFilter';
-import { KalturaDetachedResponseProfile } from 'kaltura-typescript-client/types/KalturaDetachedResponseProfile';
 import { KalturaResponseProfileType } from 'kaltura-typescript-client/types/KalturaResponseProfileType';
 import { KalturaFilterPager } from 'kaltura-typescript-client/types/KalturaFilterPager';
-import { BaseEntryListAction } from 'kaltura-typescript-client/types/BaseEntryListAction';
-import { KalturaLiveStreamAdminEntry } from 'kaltura-typescript-client/types/KalturaLiveStreamAdminEntry';
-import { KalturaLiveStreamEntry } from 'kaltura-typescript-client/types/KalturaLiveStreamEntry';
 import { KalturaClient } from '@kaltura-ng/kaltura-client';
+
+// Task 1.1 - import the service type that is used to get list of entries
 
 // Task 4.2 - register service EntriesService in component providers
 
